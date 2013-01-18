@@ -1,0 +1,23 @@
+PACKAGE = @PACKAGE@
+VERSION = @VERSION@
+utildir = @PUBRULE@
+pubdir = @prefix@
+srcdir = @srcdir@
+applib = FDL
+appname = @APPNAME@
+TAR = tar
+GZIP_ENV = --best
+
+export pubdir utildir appname applib PACKAGE
+
+SUBDIR= Apps Actions Images Scripts
+
+include $(utildir)/PubRule
+
+# For all families traduction
+# TRANSCSV += $(shell find ./Families -name "STRUCT_*.csv")
+TRANSCSV +=
+
+clean:
+	/bin/rm -f *.*~ config.* Makefile configure $(appname)_init.php info.xml $(PACKAGE)-*webinst
+	/bin/rm -fr autom4te.cache
