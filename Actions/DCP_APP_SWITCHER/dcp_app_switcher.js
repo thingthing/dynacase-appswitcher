@@ -118,8 +118,11 @@
     displayShortcut = function () {
         window.dcp_app_switcher.shortcuts = window.dcp_app_switcher.shortcuts || {};
         $.each(window.dcp_app_switcher.shortcuts, function (key, value) {
+            var curentShortcut = $("#shortcut-" + key);
             if (value) {
-                $("#shortcut-" + key).removeClass("css-shortcut-element-hidden");
+                curentShortcut.removeClass("css-shortcut-element-hidden");
+            } else {
+                curentShortcut.addClass("css-shortcut-element-hidden");
             }
         });
     };

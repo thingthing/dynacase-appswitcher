@@ -55,11 +55,12 @@ FROM application
 LEFT JOIN action
 ON application.id = action.id_application
 WHERE
-    application.tag !~* E'\\yadmin\\y'
+    (application.tag is null
+    OR application.tag !~* E'\\yadmin\\y' )
     AND application.displayable='Y'
     AND application.available = 'Y'
     AND application.name != 'DCP_APP_SWITCHER'
-    AND action.root = 'Y'
+    AND action.root = 'Y';
 SQL;
 
     simpleQuery('', $query, $applications, false, false, true);
