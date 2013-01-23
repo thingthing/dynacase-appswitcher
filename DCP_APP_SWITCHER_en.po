@@ -2,16 +2,56 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZOO\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-01-13 11:40+0100\n"
+"POT-Creation-Date: 2013-01-23 10:45+0100\n"
 "PO-Revision-Date: 2010-01-12 15:35+0100\n"
 "Last-Translator: John Doe <john.doe@somewhere.org>\n"
 "Language-Team: English <distrib@somewhere.org>\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "Template name"
-msgstr ""
+msgid "DCP_APP_SWITCHER:Add suppress shortcut"
+msgstr "Add/Suppress shortcut"
 
-msgid "Template description"
-msgstr ""
+msgid "DCP_APP_SWITCHER:DCP_APP_SWITCHER"
+msgstr "Application Switcher"
+
+msgid "DCP_APP_SWITCHER:DCP_APP_SWITCHER access"
+msgstr "ACL for Application Switcher"
+
+msgid "DCP_APP_SWITCHER:Default app switcher for DCP"
+msgstr "Default app switcher for DCP"
+
+msgid "DCP_APP_SWITCHER:Disconnect"
+msgstr "Disconnect"
+
+msgid "DCP_APP_SWITCHER:Display"
+msgstr "Display"
+
+msgid "DCP_APP_SWITCHER:No selected application"
+msgstr "No selected application"
+
+msgid "DCP_APP_SWITCHER:Open in a new window"
+msgstr "Open in a new window"
+
+msgid "DCP_APP_SWITCHER:Reload"
+msgstr "Reload"
+
+msgid "DCP_APP_SWITCHER:SETDEFAULTAPPLICATION"
+msgstr "SET DEFAULT APPLICATION"
+
+msgid "DCP_APP_SWITCHER:SHORTCUT_APPLICATION"
+msgstr "SHORTCUT APPLICATION"
+
+msgid "DCP_APP_SWITCHER:Set as default application"
+msgstr "Set as default application"
+
+msgid "DCP_APP_SWITCHER:Title"
+msgstr "&nbsp;"
+
+msgid "DCP_APP_SWITCHER:application present in application bar"
+msgstr "Application presents in application bar"
+
+msgid "DCP_APP_SWITCHER:default application displayed"
+msgstr "Default application"

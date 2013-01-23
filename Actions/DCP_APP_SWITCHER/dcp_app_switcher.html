@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="CORE/Images/dynacase.ico">
+    <link rel="SHORTCUT ICON" href="CORE/Images/dynacase.ico">
+    <link href="lib/jquery-ui/css/smoothness/jquery-ui.css?version=[WVERSION]" rel="stylesheet" type="text/css"/>
+    <link href="DCP_APP_SWITCHER/Layout/dcp_app_switcher.css?version=[VERSION]" rel="stylesheet" type="text/css"/>
+    <!--[if lt IE 8 ]>
+    <link href="DCP_APP_SWITCHER/Layout/dcp_app_switcher_ie.css?version=[VERSION]" rel="stylesheet" type="text/css"/>
+    <![endif]-->
+    <meta charset=utf-8/>
+    <title>[TEXT:DCP_APP_SWITCHER:Title]</title>
+</head>
+<body data-defaultapplication="[DEFAULT_APPLICATION_NAME]" data-clientname="[CORE_CLIENT]">
+<div class="css-header ui-widget-header">
+    <div class="css-menu css-header-left js-menu">
+        <div class="css-selected-application">
+            <span class="css-fold-menu js-fold-menu ui-icon ui-icon-triangle-1-e"></span>
+
+            <div id="selected-application" class="css-selected-application-content">
+                [TEXT:DCP_APP_SWITCHER:No selected application]
+            </div>
+        </div>
+    </div>
+    <div class="css-logout css-header-right" title="[TEXT:DCP_APP_SWITCHER:Disconnect]">
+        <button id="disconnect"></button>
+    </div>
+    <div class="css-user-zone css-header-right">
+        [NAME]
+    </div>
+    [IF DISPLAY_SEARCH_ZONE]
+    <div class="css-search-zone css-header-right">
+        <input id="search" type="text" class="css-text-search ui-corner-all" placeholder="Recherche"/>
+        <span class="css-icon-search ui-icon ui-icon-search"></span>
+    </div>
+    [ENDIF DISPLAY_SEARCH_ZONE]
+    <div class="css-pined-application css-header-right">
+        <ul class="css-shortcut-list">
+            [BLOCK MENU_APPLICATIONS]
+            <li id="shortcut-[NAME]" data-appname="[NAME]" data-appurl="[URL]" class="css-shortcut-element css-shortcut-element-hidden js-shortcut-element"
+                title="[DESCRIPTION]">
+                <div class="css-application-icon">
+                    <img src="[ICON_SRC]" alt="[ICON_ALT]"/>
+                </div>
+            </li>
+            [ENDBLOCK MENU_APPLICATIONS]
+        </ul>
+    </div>
+    <div class="ui-helper-clearfix">
+    </div>
+</div>
+<div id="content" class="css-content">
+</div>
+<div>
+    <div class="css-menu-content css-main-menu-content js-menu-content css-menu-content-hidden">
+        <ul class="css-menu-list js-menu-list">
+            [BLOCK MENU_APPLICATIONS]
+            <li id="menu-[NAME]" data-appname="[NAME]" data-appurl="[URL]"
+                class="css-menu-element js-menu-element js-menu-open-submenu" data-description="[DESCRIPTION]">
+                <div class="css-menu-element-content js-menu-element-content">
+                    <div class="css-application-icon">
+                        <img src="[ICON_SRC]" alt="[ICON_ALT]"/>
+                    </div>
+                    <span id="title-[NAME]">[TITLE]</span>
+                </div>
+                <span class="css-menu-element-icon ui-icon ui-icon-carat-1-e"></span>
+            </li>
+            [ENDBLOCK MENU_APPLICATIONS]
+        </ul>
+    </div>
+    <div class="css-contextualMenu-content css-menu-content css-menu-content-hidden js-contextualMenu-content">
+        <ul class="css-contextualMenu-list css-menu-list">
+            <li class="js-description ui-widget-header css-menu-description css-contextualMenu-element"></li>
+            <li class="css-menu-element css-contextualMenu-element js-menu-element">[TEXT:DCP_APP_SWITCHER:Display]</li>
+            <li class="css-menu-element css-contextualMenu-element js-menu-reload">[TEXT:DCP_APP_SWITCHER:Reload]</li>
+            <li class="css-menu-element css-contextualMenu-element js-menu-open">[TEXT:DCP_APP_SWITCHER:Open in a new window]</li>
+            <li class="css-menu-element css-contextualMenu-element js-menu-default-application">[TEXT:DCP_APP_SWITCHER:Set as default application]
+            </li>
+            <li class="css-menu-element css- css-contextualMenu-element menu-shortcut js-menu-shortcut">[TEXT:DCP_APP_SWITCHER:Add suppress shortcut]
+            </li>
+        </ul>
+    </div>
+</div>
+<form style="display:none" action="[CORE_STANDURL]&amp;app=AUTHENT&amp;action=LOGOUT" method="POST" name="authent"
+      id="authent">
+    <input type="hidden" name="SeenBefore" value="1">
+    <input type="hidden" name="logout" value="Y">
+    <input type="hidden" name="rapp" value="WEBDESK">
+    <input type="hidden" name="raction" value="MAIN">
+    <input type="hidden" name="rurl" value="[CORE_STANDURL]">
+    <input type="hidden" name="OldAuth" value="[PHP_AUTH_USER]">
+</form>
+<script>
+    window.dcp_app_switcher = window.dcp_app_switcher || {};
+    window.dcp_app_switcher.shortcuts = [SHORTCUT_APPLICATION];
+</script>
+<script src="lib/jquery/jquery.js?version=[WVERSION]"></script>
+<script src="lib/jquery-ui/js/jquery-ui.js?version=[WVERSION]"></script>
+<script src="DCP_APP_SWITCHER/Layout/dcp_app_switcher.js?version=[VERSION]"></script>
+</body>
+</html>
