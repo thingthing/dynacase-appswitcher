@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Save the shortcut user preferences in SHORTCUT_APPLICATION parameter
+ * Save the default application logical name preferences in DEFAULT_APPLICATION_NAME parameter
  *
  * @param Action $action
  */
-function shortcut_application(Action &$action)
+function set_default_application(Action &$action)
 {
     $return = array(
         "success" => true,
@@ -16,13 +16,12 @@ function shortcut_application(Action &$action)
     try {
 
         $usage = new ActionUsage($action);
-
-        $shortcuts = $usage->addRequiredParameter("shortcuts", "shortcuts");
+        $defaultApplication = $usage->addRequiredParameter("defaultApplication", "default application logical name");
 
         $usage->setStrictMode(false);
         $usage->verify(true);
 
-        ApplicationParameterManager::setParameterValue(ApplicationParameterManager::CURRENT_APPLICATION, "SHORTCUT_APPLICATION", $shortcuts);
+        ApplicationParameterManager::setParameterValue(ApplicationParameterManager::CURRENT_APPLICATION, "DEFAULT_APPLICATION_NAME", $defaultApplication);
 
     } catch (Exception $e) {
         $return["success"] = false;

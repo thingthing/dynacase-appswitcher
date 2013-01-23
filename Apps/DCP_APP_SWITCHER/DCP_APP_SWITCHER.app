@@ -35,10 +35,10 @@ $action_desc = array(
         "root" => "Y"
     ),
     array(
-        "name" => "SETDEFAULTAPPLICATION",
+        "name" => "SET_DEFAULT_APPLICATION",
         "short_name" => N_("DCP_APP_SWITCHER:SETDEFAULTAPPLICATION"),
-        "script" => "setdefaultapplication.php",
-        "function" => "setdefaultapplication",
+        "script" => "set_default_application.php",
+        "function" => "set_default_application",
         "acl" => "DCP_APP_SWITCHER_USER"
     ),
     array(

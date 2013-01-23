@@ -1,9 +1,46 @@
 (function ($, document, window) {
     "use strict";
     var resizeIframe, getApplicationIFrame, loadApplication, loadSearchApplication, displaySubMenu, hideSubMenu,
-        reloadApplication, hideMainMenu, updateDefaultApplication, displayShortcut, updateShortcuts;
+        reloadApplication, hideMainMenu, updateDefaultApplication, displayShortcut, updateShortcuts, handleAjaxRequest,
+        logError;
 
     window.dcp_app_switcher = window.dcp_app_switcher || {};
+
+
+    /**
+     * Wrap ajax request
+     *
+     * @param requestObject
+     * @param success
+     * @param fail
+     * @private
+     */
+    handleAjaxRequest = function handleAjaxRequest(requestObject, success, fail) {
+        requestObject.pipe(
+            function (response) {
+                if (response.success) {
+                    return (response);
+                }
+                return ($.Deferred().reject(response));
+            },
+            function (response) {
+                return ({
+                    success : false,
+                    result :  null,
+                    error :   "Unexpected error: " + response.status + " " + response.statusText
+                });
+            }
+        ).then(success, fail);
+    };
+
+    logError = function logError(err) {
+        err = err.error || err;
+        if (window.console) {
+            window.console.log(err);
+        } else {
+            window.alert(err);
+        }
+    };
 
     /**
      * Resize iframe with content size
@@ -64,11 +101,18 @@
         return applicationIframe;
     };
 
+    /**
+     * Reload/Init and show the selected application
+     *
+     * @param $app
+     * @return {jQuery}
+     */
     reloadApplication = function ($app) {
         var iframe = loadApplication($app);
         if (iframe[0].contentDocument.location.href !== "about:blank") {
             iframe[0].contentDocument.location.reload();
         }
+        return iframe;
     };
 
     /**
@@ -84,6 +128,13 @@
         $searchApplication.attr("src", appurl);
     };
 
+    /**
+     * Display the sub menu
+     *
+     * Reinit the hide timer
+     *
+     * @param $rootElement
+     */
     displaySubMenu = function displaySubMenu($rootElement) {
         var top, left, rootPosition, $contextualMenu = $(".js-contextualMenu-content"), timeoutid = $contextualMenu.data("timeoutid");
 
@@ -98,6 +149,11 @@
         $contextualMenu.css({ top : top, left : left}).removeClass("css-menu-content-hidden").data("timeoutid", "");
     };
 
+    /**
+     * Hide the sub menu
+     *
+     * Reinit the hide timer
+     */
     hideSubMenu = function hideSubMenu() {
         var $contextualMenu = $(".js-contextualMenu-content"), timeoutid = $contextualMenu.data("timeoutid");
         if (timeoutid) {
@@ -106,15 +162,17 @@
         $contextualMenu.addClass("css-menu-content-hidden").data("timeoutid", "").css("left", "");
     };
 
+    /**
+     * Hide the main menu
+     */
     hideMainMenu = function () {
         $(".js-fold-menu").addClass("ui-icon-triangle-1-e").removeClass("ui-icon-triangle-1-s");
         $(".js-menu-content").addClass("css-menu-content-hidden");
     };
 
-    updateDefaultApplication = function (applicationName) {
-        $.get("?app=DCP_APP_SWITCHER&action=SETDEFAULTAPPLICATION", {defaultApplication : applicationName});
-    };
-
+    /**
+     * Display the activated shortcut (hide the other)
+     */
     displayShortcut = function () {
         window.dcp_app_switcher.shortcuts = window.dcp_app_switcher.shortcuts || {};
         $.each(window.dcp_app_switcher.shortcuts, function (key, value) {
@@ -127,9 +185,25 @@
         });
     };
 
+    /**
+     * Save the selected shortcut in a user param
+     */
     updateShortcuts = function () {
         window.dcp_app_switcher.shortcuts = window.dcp_app_switcher.shortcuts || {};
-        $.post("?app=DCP_APP_SWITCHER&action=SHORTCUT_APPLICATION", {shortcuts : JSON.stringify(window.dcp_app_switcher.shortcuts)});
+        handleAjaxRequest($.post("?app=DCP_APP_SWITCHER&action=SHORTCUT_APPLICATION", {shortcuts : JSON.stringify(window.dcp_app_switcher.shortcuts)}),
+            $.noop,
+            logError);
+    };
+
+    /**
+     * Save the default application in a user param
+     *
+     * @param applicationName
+     */
+    updateDefaultApplication = function (applicationName) {
+        handleAjaxRequest($.get("?app=DCP_APP_SWITCHER&action=SET_DEFAULT_APPLICATION", {defaultApplication : applicationName}),
+            $.noop,
+            logError);
     };
 
     $(document).ready(function () {
