@@ -49,7 +49,7 @@ msgid "DCP_APP_SWITCHER:Set as default application"
 msgstr "Sélectionner comme application par défaut"
 
 msgid "DCP_APP_SWITCHER:Title"
-msgstr "&nbsp;"
+msgstr "Dynacase"
 
 msgid "DCP_APP_SWITCHER:application present in application bar"
 msgstr "Liste des applications dans la barre"
