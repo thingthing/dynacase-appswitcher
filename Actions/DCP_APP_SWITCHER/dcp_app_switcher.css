@@ -1,0 +1,198 @@
+/* Overload basic style*/
+img {
+    width: 100%;
+    height: auto;
+}
+
+html,
+body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+/* Content Zone */
+.css-content {
+    position: absolute;
+    top: 1.5625em;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    background-color: #fff;
+    margin-left: 1px;
+    padding: 5px;
+    margin-top: 2px;
+}
+
+.css-iframe-content {
+    background-color: transparent;
+    border: 0 none transparent;
+    padding: 0;
+    width: 100%;
+    height: 600px;
+}
+
+/* Header zone */
+.css-header {
+    height: 1.5625em; /*25/16*/
+    line-height: 1.5625em;
+}
+
+.css-header-left {
+    float: left;
+    margin-right: 10px;
+    height: 100%;
+}
+
+.css-header-right {
+    float: right;
+    margin-left: 10px;
+    height: 100%;
+}
+
+.css-clear-all {
+    clear: both;
+}
+
+.css-application-icon {
+    width: 1em;
+    display: inline-block;
+}
+
+.css-application-icon img {
+    vertical-align: middle;
+}
+
+/* Menu elements*/
+.css-menu {
+    cursor: pointer;
+    min-width: 10em;
+}
+
+.css-menu-content {
+    position: absolute;
+    top: 1.5625em;
+    left: 0;
+    margin-top: 2px;
+    background-color: white;
+    -webkit-box-shadow: 5px 5px 16px rgba(50, 50, 50, 0.82);
+    -moz-box-shadow: 5px 5px 16px rgba(50, 50, 50, 0.82);
+    box-shadow: 5px 5px 16px rgba(50, 50, 50, 0.82);
+}
+
+.css-main-menu-content {
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.css-menu-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: block;
+    min-width: 10em;
+    z-index: 0;
+}
+
+.css-menu-content-hidden {
+    left: -900px;
+}
+
+.css-contextualMenu-content {
+    z-index: 9999;
+}
+
+.css-menu-element {
+    position: relative;
+    cursor: pointer;
+    height: 2em;
+    line-height: 2em;
+    padding-right: 15px;
+    overflow-y: hidden;
+    border: 1px white;
+}
+
+.css-menu-element-icon {
+    position: absolute;
+    right: 0;
+    top: 0.5em;
+}
+
+.css-menu-description {
+    border: 0;
+    text-align: center;
+}
+
+.css-contextualMenu-element {
+    height: 1.5em;
+    line-height: 1.5em;
+}
+
+.menu-shortcut {
+    border-top: 1px rgb(202, 202, 202) solid;
+}
+
+/*Selected element*/
+.css-selected-application {
+    position: relative;
+}
+
+.css-fold-menu {
+    position: absolute;
+    left: 0.1em;
+    top: 50%;
+    margin-top: -8px;
+}
+
+.css-selected-application-content {
+    margin-left: 1em;
+}
+
+/* Text search elements */
+.css-search-zone {
+    position: relative;
+}
+
+.css-icon-search {
+    position: absolute;
+    right: 0.1em;
+    top: 0.3em;
+    cursor: pointer;
+}
+
+.css-text-search {
+    background: whitesmoke;
+    width: 8em;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.css-text-search-activate {
+    background: white;
+    width: 16em;
+}
+
+/* shortcut */
+
+.css-shortcut-element {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.css-shortcut-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.css-shortcut-element-hidden {
+    display: none;
+}

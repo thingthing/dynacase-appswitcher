@@ -1,0 +1,20 @@
+<?php
+
+global $app_const;
+
+$app_const = array(
+    "INIT" => "yes",
+    "VERSION" => "@VERSION@-@RELEASE@",
+    "DEFAULT_APPLICATION_NAME" => array(
+        "val" => "",
+        "descr" => N_("DCP_APP_SWITCHER:default application displayed"),
+        "user" => "Y",
+        "kind" => "text"
+    ),
+    "SHORTCUT_APPLICATION" => array(
+        "val" => "{}",
+        "descr" => N_("DCP_APP_SWITCHER:application present in application bar"),
+        "user" => "Y",
+        "kind" => "static"
+    )
+);

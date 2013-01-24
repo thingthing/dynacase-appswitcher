@@ -1,0 +1,45 @@
+.css-menu-list {
+    zoom: 1;
+    width:15em;
+}
+
+.css-menu-element {
+    zoom : 1;
+    width:15em;
+    word-wrap: break-word;
+    height: auto;
+}
+
+.css-fold-menu {
+    left: -1em;
+    top: 0;
+    margin-top: auto;
+}
+
+.css-menu-content-hidden {
+    display: none;
+    left: 0;
+}
+
+.css-application-icon {
+    zoom: 1;
+    display: inline;
+}
+
+.css-shortcut-element {
+    zoom: 1;
+    display: inline;
+    padding: 0 2px;
+}
+
+.css-shortcut-element-hidden {
+    display: none;
+}
+
+.css-contextualMenu-element {
+    height: auto;
+}
+
+.css-content {
+    height: auto;
+}
