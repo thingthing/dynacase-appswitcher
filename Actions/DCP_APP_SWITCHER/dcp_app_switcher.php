@@ -45,6 +45,7 @@ function getDisplayableApplication(Action $action)
     $query = <<< 'SQL'
 SELECT
     application.name,
+    application.id,
     application.icon,
     application.short_name,
     application.description,
