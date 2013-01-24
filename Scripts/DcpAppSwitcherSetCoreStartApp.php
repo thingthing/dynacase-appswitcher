@@ -6,6 +6,6 @@ $force = $actionUsage->addOptionalParameter("force", "force modification", array
 
 $coreStartApp = ApplicationParameterManager::getParameterValue("CORE", "CORE_START_APP");
 
-if ($coreStartApp === "WEBDESK" || $force === "TRUE") {
+if ($coreStartApp === "CORE" || $force === "TRUE") {
     ApplicationParameterManager::setParameterValue("CORE", "CORE_START_APP", "DCP_APP_SWITCHER");
 }
