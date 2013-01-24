@@ -6,7 +6,6 @@
 
     window.dcp_app_switcher = window.dcp_app_switcher || {};
 
-
     /**
      * Wrap ajax request
      *
@@ -216,7 +215,7 @@
         $(".js-menu-element").on("click", function () {
             loadApplication($(this));
         });
-        $(".js-menu-open-submenu").on("mouseenter", function () {
+        $(".js-menu-open-submenu").on("mouseenter",function () {
             var timeOutId, $this = $(this);
             hideSubMenu();
             timeOutId = window.setTimeout(function () {
@@ -224,18 +223,18 @@
             }, 200);
             $this.data("timeoutid", timeOutId);
         }).on("mouseleave", function () {
-            var $this = $(this), timeOutId = $this.data("timeoutid");
-            if (timeOutId) {
-                window.clearInterval(timeOutId);
-            }
-            $this.data("timeoutid", "");
-        });
-        $(".css-menu-element").on("mouseenter", function () {
+                var $this = $(this), timeOutId = $this.data("timeoutid");
+                if (timeOutId) {
+                    window.clearInterval(timeOutId);
+                }
+                $this.data("timeoutid", "");
+            });
+        $(".css-menu-element").on("mouseenter",function () {
             $(this).addClass("ui-state-focus");
         }).on("mouseleave", function () {
-            $(this).removeClass("ui-state-focus");
-        });
-        $(".js-contextualMenu-content").on("mouseleave", function () {
+                $(this).removeClass("ui-state-focus");
+            });
+        $(".js-contextualMenu-content").on("mouseleave",function () {
             var timeOutId, $this = $(this);
             timeOutId = window.setTimeout(function () {
                 hideSubMenu();
@@ -286,8 +285,8 @@
             },
             text :  false
         }).on("click", function () {
-            $("#authent").trigger("submit");
-        });
+                $("#authent").trigger("submit");
+            });
         /* Init default application */
         window.setTimeout(function () {
             var defaultApplication;
@@ -307,6 +306,10 @@
         });
         window.setTimeout(function () {
             displayShortcut();
+        }, 0);
+        /* Password */
+        window.setTimeout(function () {
+            $("#userButton").changePassword();
         }, 0);
         /* resize*/
         $(window).on("resize", resizeIframe).on("hashchange", function () {

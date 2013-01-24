@@ -26,11 +26,16 @@
         <button id="disconnect"></button>
     </div>
     <div class="css-user-zone css-header-right">
-        [NAME]
+        [IF DISPLAY_CHANGE_BUTTON]
+        <button id="userButton">[NAME]</button>
+        [ENDIF DISPLAY_CHANGE_BUTTON]
+        [IFNOT DISPLAY_CHANGE_BUTTON]
+            [NAME]
+        [ENDIF DISPLAY_CHANGE_BUTTON]
     </div>
     [IF DISPLAY_SEARCH_ZONE]
     <div class="css-search-zone css-header-right">
-        <input id="search" type="text" class="css-text-search ui-corner-all" placeholder="Recherche"/>
+        <input id="search" type="text" class="css-text-search ui-corner-all" placeholder="[TEXT:DCP_APP_SWITCHER:Search]"/>
         <span class="css-icon-search ui-icon ui-icon-search"></span>
     </div>
     [ENDIF DISPLAY_SEARCH_ZONE]
@@ -81,11 +86,11 @@
         </ul>
     </div>
 </div>
-<form style="display:none" action="[CORE_STANDURL]&amp;app=AUTHENT&amp;action=LOGOUT" method="POST" name="authent"
+<form style="display:none;" action="[CORE_STANDURL]&amp;app=AUTHENT&amp;action=LOGOUT" method="POST" name="authent"
       id="authent">
     <input type="hidden" name="SeenBefore" value="1">
     <input type="hidden" name="logout" value="Y">
-    <input type="hidden" name="rapp" value="WEBDESK">
+    <input type="hidden" name="rapp" value="DCP_APP_SWITCHER">
     <input type="hidden" name="raction" value="MAIN">
     <input type="hidden" name="rurl" value="[CORE_STANDURL]">
     <input type="hidden" name="OldAuth" value="[PHP_AUTH_USER]">
@@ -97,6 +102,7 @@
 <script src="lib/json2/json2.js?version=[WVERSION]"></script>
 <script src="lib/jquery/jquery.js?version=[WVERSION]"></script>
 <script src="lib/jquery-ui/js/jquery-ui.js?version=[WVERSION]"></script>
+<script src="[WIDGET_PASSWORD]"></script>
 <script src="DCP_APP_SWITCHER/Layout/dcp_app_switcher.js?version=[VERSION]"></script>
 </body>
 </html>

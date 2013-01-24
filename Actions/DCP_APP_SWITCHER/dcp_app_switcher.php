@@ -21,6 +21,18 @@ function app_switcher(Action & $action)
     /** For authent mecanism */
     $action->lay->set("PHP_AUTH_USER", $_SERVER['PHP_AUTH_USER']);
 
+    /**
+     * Add widget code
+     */
+    $action->lay->set("WIDGET_PASSWORD", $action->parent->getJsLink("CORE:dcpui.changepassword.js.xml", true));
+
+    /**
+     * Test if can change password
+     */
+
+    $canExecuteChangePassword = $action->canExecute('FDL', 'CHANGE_USER_PASSWORD');
+    $action->lay->set('DISPLAY_CHANGE_BUTTON', ("" == $canExecuteChangePassword));
+
     $displayableApplication = getDisplayableApplication($action);
 
     if (isset($displayableApplication["FGSEARCH"])) {
