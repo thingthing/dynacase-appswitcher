@@ -29,7 +29,7 @@ function app_switcher(Action & $action)
     /**
      * Test if can change password
      */
-    $action->lay->set('DISPLAY_CHANGE_BUTTON', ("" == $user->control("edit")));
+    $action->lay->set('DISPLAY_CHANGE_BUTTON', ("" === $user->canEdit()));
 
     $displayableApplication = getDisplayableApplication($action);
 
