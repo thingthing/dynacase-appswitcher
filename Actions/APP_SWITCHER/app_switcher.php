@@ -21,6 +21,16 @@ function app_switcher(Action & $action)
     /** For authent mecanism */
     $action->lay->set("PHP_AUTH_USER", $_SERVER['PHP_AUTH_USER']);
 
+    /**
+     * Add widget code
+     */
+    $action->lay->set("WIDGET_PASSWORD", $action->parent->getJsLink("CORE:dcpui.changepassword.js.xml", true));
+
+    /**
+     * Test if can change password
+     */
+    $action->lay->set('DISPLAY_CHANGE_BUTTON', ("" === $user->canEdit()));
+
     $displayableApplication = getDisplayableApplication($action);
 
     if (isset($displayableApplication["FGSEARCH"])) {
@@ -60,7 +70,7 @@ WHERE
     OR application.tag !~* E'\\yadmin\\y' )
     AND application.displayable='Y'
     AND application.available = 'Y'
-    AND application.name != 'DCP_APP_SWITCHER'
+    AND application.name != 'APP_SWITCHER'
     AND action.root = 'Y';
 SQL;
 

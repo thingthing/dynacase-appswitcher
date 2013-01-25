@@ -5,23 +5,23 @@
     <description>An application switcher for Dynacase Platform</description>
 
     <requires>
-        <module comp='ge' version='3.2' name='dynacase-platform'/>
+        <module comp='ge' version='3.2.5' name='dynacase-core'/>
     </requires>
 
     <post-install>
-        <process command="programs/record_application DCP_APP_SWITCHER" />
-        <process command="./wsh.php --api=DcpAppSwitcherSetCoreStartApp">
-            <label lang="en">Register DCP_APP_SWITCHER as basic switcher application</label>
+        <process command="programs/record_application @APPNAME@" />
+        <process command="./wsh.php --api=AppSwitcherSetCoreStartApp">
+            <label lang="en">Register @APPNAME@ as basic switcher application</label>
         </process>
         <process command="programs/update_catalog" />
     </post-install>
 
     <post-upgrade>
-        <process command="programs/pre_migration DCP_APP_SWITCHER" />
-        <process command="programs/record_application DCP_APP_SWITCHER" />
-        <process command="programs/post_migration DCP_APP_SWITCHER" />
-        <process command="./wsh.php --api=DcpAppSwitcherSetCoreStartApp">
-            <label lang="en">Register DCP_APP_SWITCHER as basic switcher application</label>
+        <process command="programs/pre_migration @APPNAME@" />
+        <process command="programs/record_application @APPNAME@" />
+        <process command="programs/post_migration @APPNAME@" />
+        <process command="./wsh.php --api=AppSwitcherSetCoreStartApp">
+            <label lang="en">Register APP_SWITCHER as basic switcher application</label>
         </process>
         <process command="programs/update_catalog" />
     </post-upgrade>
