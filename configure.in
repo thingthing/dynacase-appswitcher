@@ -19,7 +19,7 @@ RELEASE=`cat RELEASE`
 AC_SUBST(PACKAGE)
 PACKAGE=dynacase-app-switcher
 AC_SUBST(APPNAME)
-APPNAME=DCP_APP_SWITCHER
+APPNAME=APP_SWITCHER
 ac_default_prefix=/var/www/dynacase/dynacase
 AC_SUBST(PUBRULE)
 PUBRULE=

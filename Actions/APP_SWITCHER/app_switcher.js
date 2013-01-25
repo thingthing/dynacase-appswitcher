@@ -4,7 +4,7 @@
         reloadApplication, hideMainMenu, updateDefaultApplication, displayShortcut, updateShortcuts, handleAjaxRequest,
         logError;
 
-    window.dcp_app_switcher = window.dcp_app_switcher || {};
+    window.app_switcher = window.app_switcher || {};
 
     /**
      * Wrap ajax request
@@ -91,7 +91,7 @@
         window.setTimeout(resizeIframe, 0);
         /* Change the state of the page (selected application, #)*/
         window.location.hash = appName;
-        window.dcp_app_switcher.selectedApp = appName;
+        window.app_switcher.selectedApp = appName;
         document.title = $("#title-" + appName).text() + " - " + $("body").data("clientname");
         $selectedContent.empty().append(loadedMenuApp.find(".js-menu-element-content").clone());
         loadedMenuApp.addClass("ui-state-highlight").siblings().removeClass("ui-state-highlight");
@@ -173,8 +173,8 @@
      * Display the activated shortcut (hide the other)
      */
     displayShortcut = function () {
-        window.dcp_app_switcher.shortcuts = window.dcp_app_switcher.shortcuts || {};
-        $.each(window.dcp_app_switcher.shortcuts, function (key, value) {
+        window.app_switcher.shortcuts = window.app_switcher.shortcuts || {};
+        $.each(window.app_switcher.shortcuts, function (key, value) {
             var curentShortcut = $("#shortcut-" + key);
             if (value) {
                 curentShortcut.removeClass("css-shortcut-element-hidden");
@@ -188,8 +188,8 @@
      * Save the selected shortcut in a user param
      */
     updateShortcuts = function () {
-        window.dcp_app_switcher.shortcuts = window.dcp_app_switcher.shortcuts || {};
-        handleAjaxRequest($.post("?app=DCP_APP_SWITCHER&action=SHORTCUT_APPLICATION", {shortcuts : JSON.stringify(window.dcp_app_switcher.shortcuts)}),
+        window.app_switcher.shortcuts = window.app_switcher.shortcuts || {};
+        handleAjaxRequest($.post("?app=APP_SWITCHER&action=SHORTCUT_APPLICATION", {shortcuts : JSON.stringify(window.app_switcher.shortcuts)}),
             $.noop,
             logError);
     };
@@ -200,7 +200,7 @@
      * @param applicationName
      */
     updateDefaultApplication = function (applicationName) {
-        handleAjaxRequest($.get("?app=DCP_APP_SWITCHER&action=SET_DEFAULT_APPLICATION", {defaultApplication : applicationName}),
+        handleAjaxRequest($.get("?app=APP_SWITCHER&action=SET_DEFAULT_APPLICATION", {defaultApplication : applicationName}),
             $.noop,
             logError);
     };
@@ -260,8 +260,8 @@
             hideSubMenu();
         });
         $(".js-menu-shortcut").on("click", function () {
-            window.dcp_app_switcher.shortcuts = window.dcp_app_switcher.shortcuts || {};
-            window.dcp_app_switcher.shortcuts[$(this).data("appname")] = !(window.dcp_app_switcher.shortcuts[$(this).data("appname")]);
+            window.app_switcher.shortcuts = window.app_switcher.shortcuts || {};
+            window.app_switcher.shortcuts[$(this).data("appname")] = !(window.app_switcher.shortcuts[$(this).data("appname")]);
             displayShortcut();
             updateShortcuts();
             hideMainMenu();
@@ -314,7 +314,7 @@
         /* resize*/
         $(window).on("resize", resizeIframe).on("hashchange", function () {
             var hash = window.location.hash.slice(1);
-            if (hash !== window.dcp_app_switcher.selectedApp) {
+            if (hash !== window.app_switcher.selectedApp) {
                 $("#menu-" + hash).trigger("click");
             }
         });

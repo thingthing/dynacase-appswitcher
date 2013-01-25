@@ -4,12 +4,12 @@
     <link rel="icon" href="CORE/Images/dynacase.ico">
     <link rel="SHORTCUT ICON" href="CORE/Images/dynacase.ico">
     <link href="lib/jquery-ui/css/smoothness/jquery-ui.css?version=[WVERSION]" rel="stylesheet" type="text/css"/>
-    <link href="DCP_APP_SWITCHER/Layout/dcp_app_switcher.css?version=[VERSION]" rel="stylesheet" type="text/css"/>
+    <link href="APP_SWITCHER/Layout/app_switcher.css?version=[VERSION]" rel="stylesheet" type="text/css"/>
     <!--[if lt IE 8 ]>
-    <link href="DCP_APP_SWITCHER/Layout/dcp_app_switcher_ie.css?version=[VERSION]" rel="stylesheet" type="text/css"/>
+    <link href="APP_SWITCHER/Layout/app_switcher_ie.css?version=[VERSION]" rel="stylesheet" type="text/css"/>
     <![endif]-->
     <meta charset=utf-8/>
-    <title>[TEXT:DCP_APP_SWITCHER:Title] - [CORE_CLIENT]</title>
+    <title>[TEXT:APP_SWITCHER:Title] - [CORE_CLIENT]</title>
 </head>
 <body data-defaultapplication="[DEFAULT_APPLICATION_NAME]" data-clientname="[CORE_CLIENT]">
 <div class="css-header ui-widget-header">
@@ -18,11 +18,11 @@
             <span class="css-fold-menu js-fold-menu ui-icon ui-icon-triangle-1-e"></span>
 
             <div id="selected-application" class="css-selected-application-content">
-                [TEXT:DCP_APP_SWITCHER:No selected application]
+                [TEXT:APP_SWITCHER:No selected application]
             </div>
         </div>
     </div>
-    <div class="css-logout css-header-right" title="[TEXT:DCP_APP_SWITCHER:Disconnect]">
+    <div class="css-logout css-header-right" title="[TEXT:APP_SWITCHER:Disconnect]">
         <button id="disconnect"></button>
     </div>
     <div class="css-user-zone css-header-right">
@@ -35,7 +35,7 @@
     </div>
     [IF DISPLAY_SEARCH_ZONE]
     <div class="css-search-zone css-header-right">
-        <input id="search" type="text" class="css-text-search ui-corner-all" placeholder="[TEXT:DCP_APP_SWITCHER:Search]"/>
+        <input id="search" type="text" class="css-text-search ui-corner-all" placeholder="[TEXT:APP_SWITCHER:Search]"/>
         <span class="css-icon-search ui-icon ui-icon-search"></span>
     </div>
     [ENDIF DISPLAY_SEARCH_ZONE]
@@ -76,12 +76,12 @@
     <div class="css-contextualMenu-content css-menu-content css-menu-content-hidden js-contextualMenu-content">
         <ul class="css-contextualMenu-list css-menu-list">
             <li class="js-description ui-widget-header css-menu-description css-contextualMenu-element"></li>
-            <li class="css-menu-element css-contextualMenu-element js-menu-element">[TEXT:DCP_APP_SWITCHER:Display]</li>
-            <li class="css-menu-element css-contextualMenu-element js-menu-reload">[TEXT:DCP_APP_SWITCHER:Reload]</li>
-            <li class="css-menu-element css-contextualMenu-element js-menu-open">[TEXT:DCP_APP_SWITCHER:Open in a new window]</li>
-            <li class="css-menu-element css-contextualMenu-element js-menu-default-application">[TEXT:DCP_APP_SWITCHER:Set as default application]
+            <li class="css-menu-element css-contextualMenu-element js-menu-element">[TEXT:APP_SWITCHER:Display]</li>
+            <li class="css-menu-element css-contextualMenu-element js-menu-reload">[TEXT:APP_SWITCHER:Reload]</li>
+            <li class="css-menu-element css-contextualMenu-element js-menu-open">[TEXT:APP_SWITCHER:Open in a new window]</li>
+            <li class="css-menu-element css-contextualMenu-element js-menu-default-application">[TEXT:APP_SWITCHER:Set as default application]
             </li>
-            <li class="css-menu-element css- css-contextualMenu-element menu-shortcut js-menu-shortcut">[TEXT:DCP_APP_SWITCHER:Add suppress shortcut]
+            <li class="css-menu-element css- css-contextualMenu-element menu-shortcut js-menu-shortcut">[TEXT:APP_SWITCHER:Add suppress shortcut]
             </li>
         </ul>
     </div>
@@ -90,19 +90,19 @@
       id="authent">
     <input type="hidden" name="SeenBefore" value="1">
     <input type="hidden" name="logout" value="Y">
-    <input type="hidden" name="rapp" value="DCP_APP_SWITCHER">
+    <input type="hidden" name="rapp" value="APP_SWITCHER">
     <input type="hidden" name="raction" value="MAIN">
     <input type="hidden" name="rurl" value="[CORE_STANDURL]">
     <input type="hidden" name="OldAuth" value="[PHP_AUTH_USER]">
 </form>
 <script>
-    window.dcp_app_switcher = window.dcp_app_switcher || {};
-    window.dcp_app_switcher.shortcuts = [SHORTCUT_APPLICATION];
+    window.app_switcher = window.app_switcher || {};
+    window.app_switcher.shortcuts = [SHORTCUT_APPLICATION];
 </script>
 <script src="lib/json2/json2.js?version=[WVERSION]"></script>
 <script src="lib/jquery/jquery.js?version=[WVERSION]"></script>
 <script src="lib/jquery-ui/js/jquery-ui.js?version=[WVERSION]"></script>
 <script src="[WIDGET_PASSWORD]"></script>
-<script src="DCP_APP_SWITCHER/Layout/dcp_app_switcher.js?version=[VERSION]"></script>
+<script src="APP_SWITCHER/Layout/app_switcher.js?version=[VERSION]"></script>
 </body>
 </html>

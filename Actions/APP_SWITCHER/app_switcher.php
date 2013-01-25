@@ -29,9 +29,7 @@ function app_switcher(Action & $action)
     /**
      * Test if can change password
      */
-
-    $canExecuteChangePassword = $action->canExecute('FDL', 'CHANGE_USER_PASSWORD');
-    $action->lay->set('DISPLAY_CHANGE_BUTTON', ("" == $canExecuteChangePassword));
+    $action->lay->set('DISPLAY_CHANGE_BUTTON', ("" == $user->control("edit")));
 
     $displayableApplication = getDisplayableApplication($action);
 
@@ -72,7 +70,7 @@ WHERE
     OR application.tag !~* E'\\yadmin\\y' )
     AND application.displayable='Y'
     AND application.available = 'Y'
-    AND application.name != 'DCP_APP_SWITCHER'
+    AND application.name != 'APP_SWITCHER'
     AND action.root = 'Y';
 SQL;
 

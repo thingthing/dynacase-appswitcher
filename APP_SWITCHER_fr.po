@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TEMPLATE\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-23 10:45+0100\n"
+"POT-Creation-Date: 2013-01-25 11:55+0100\n"
 "PO-Revision-Date: 2010-01-12 15:35+0100\n"
 "Last-Translator: Jean Martin <jean.martin@somewhere.org>\n"
 "Language-Team: French <distrib@somewhere.org>\n"
@@ -12,53 +12,50 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "DCP_APP_SWITCHER:Add suppress shortcut"
-msgstr "Ajouter/Supprimer un raccourci"
-
-msgid "DCP_APP_SWITCHER:DCP_APP_SWITCHER"
+msgid "APP_SWITCHER:APP_SWITCHER"
 msgstr "Application de sélection d'application"
 
-msgid "DCP_APP_SWITCHER:DCP_APP_SWITCHER access"
+msgid "APP_SWITCHER:APP_SWITCHER access"
 msgstr "ACL : Application de sélection d'application"
 
-msgid "DCP_APP_SWITCHER:Default app switcher for DCP"
+msgid "APP_SWITCHER:Default app switcher for DCP"
 msgstr "Application de sélection d'application"
 
-msgid "DCP_APP_SWITCHER:Disconnect"
+msgid "APP_SWITCHER:Disconnect"
 msgstr "Déconnecter"
 
-msgid "DCP_APP_SWITCHER:Display"
+msgid "APP_SWITCHER:Display"
 msgstr "Afficher"
 
-msgid "DCP_APP_SWITCHER:No selected application"
+msgid "APP_SWITCHER:No selected application"
 msgstr "Pas d'application sélectionnée"
 
-msgid "DCP_APP_SWITCHER:Open in a new window"
+msgid "APP_SWITCHER:Open in a new window"
 msgstr "Ouvrir dans une fenêtre..."
 
-msgid "DCP_APP_SWITCHER:Reload"
+msgid "APP_SWITCHER:Reload"
 msgstr "Recharger"
 
-msgid "DCP_APP_SWITCHER:SETDEFAULTAPPLICATION"
+msgid "APP_SWITCHER:SETDEFAULTAPPLICATION"
 msgstr "SET DEFAULT APPLICATION"
 
-msgid "DCP_APP_SWITCHER:SHORTCUT_APPLICATION"
+msgid "APP_SWITCHER:SHORTCUT_APPLICATION"
 msgstr "SHORTCUT APPLICATION"
 
-msgid "DCP_APP_SWITCHER:Set as default application"
+msgid "APP_SWITCHER:Search"
+msgstr "Recherche"
+
+msgid "APP_SWITCHER:Set as default application"
 msgstr "Sélectionner comme application par défaut"
 
-msgid "DCP_APP_SWITCHER:Title"
+msgid "APP_SWITCHER:Title"
 msgstr "Dynacase"
 
-msgid "DCP_APP_SWITCHER:application present in application bar"
+msgid "APP_SWITCHER:application present in application bar"
 msgstr "Liste des applications dans la barre"
 
-msgid "DCP_APP_SWITCHER:default application displayed"
+msgid "APP_SWITCHER:default application displayed"
 msgstr "Application par défaut"
 
-msgid "description"
-msgstr ""
-
-msgid "short_name"
-msgstr ""
+msgid "APP_SWITCHER:Add suppress shortcut"
+msgstr "Ajouter/Supprimer un raccourci"
