@@ -10,7 +10,7 @@ GZIP_ENV = --best
 
 export pubdir utildir appname applib PACKAGE
 
-SUBDIR= Apps Actions Images Scripts
+SUBDIR= Actions Apps Images Programs Scripts
 
 include $(utildir)/PubRule
 

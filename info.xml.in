@@ -13,6 +13,7 @@
         <process command="./wsh.php --api=AppSwitcherSetCoreStartApp">
             <label lang="en">Register @APPNAME@ as basic switcher application</label>
         </process>
+        <process command="programs/convert_from_webdesk @APPNAME@" />
         <process command="programs/update_catalog" />
     </post-install>
 
