@@ -21,6 +21,12 @@
     left: 0;
 }
 
+.css-menu-element-icon {
+    position: absolute;
+    right: 0;
+    top: 0.25em;
+}
+
 .css-application-icon {
     zoom: 1;
     display: inline;

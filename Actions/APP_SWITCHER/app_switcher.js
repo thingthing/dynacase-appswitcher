@@ -2,9 +2,12 @@
     "use strict";
     var resizeIframe, getApplicationIFrame, loadApplication, loadSearchApplication, displaySubMenu, hideSubMenu,
         reloadApplication, hideMainMenu, updateDefaultApplication, displayShortcut, updateShortcuts, handleAjaxRequest,
-        logError;
+        logError, autoDisplayMenuTime, autoHideSubMenuTime;
 
     window.app_switcher = window.app_switcher || {};
+
+    autoDisplayMenuTime = 700;
+    autoHideSubMenuTime = 1000;
 
     /**
      * Wrap ajax request
@@ -217,30 +220,30 @@
         $(".js-menu-element").on("click", function () {
             loadApplication($(this));
         });
-        $(".js-menu-open-submenu").on("mouseenter",function () {
+        $(".js-menu-open-submenu").on("mouseenter", function () {
             var timeOutId, $this = $(this);
             hideSubMenu();
             timeOutId = window.setTimeout(function () {
                 displaySubMenu($this);
-            }, 200);
+            }, autoDisplayMenuTime);
             $this.data("timeoutid", timeOutId);
         }).on("mouseleave", function () {
-                var $this = $(this), timeOutId = $this.data("timeoutid");
-                if (timeOutId) {
-                    window.clearInterval(timeOutId);
-                }
-                $this.data("timeoutid", "");
-            });
-        $(".css-menu-element").on("mouseenter",function () {
+            var $this = $(this), timeOutId = $this.data("timeoutid");
+            if (timeOutId) {
+                window.clearInterval(timeOutId);
+            }
+            $this.data("timeoutid", "");
+        });
+        $(".css-menu-element").on("mouseenter", function () {
             $(this).addClass("ui-state-focus");
         }).on("mouseleave", function () {
-                $(this).removeClass("ui-state-focus");
-            });
-        $(".js-contextualMenu-content").on("mouseleave",function () {
+            $(this).removeClass("ui-state-focus");
+        });
+        $(".js-contextualMenu-content").on("mouseleave", function () {
             var timeOutId, $this = $(this);
             timeOutId = window.setTimeout(function () {
                 hideSubMenu();
-            }, 1000);
+            }, autoHideSubMenuTime);
             $this.data("timeoutid", timeOutId);
         }).on("mouseenter", function () {
             var timeOutId = $(this).data("timeoutid");
@@ -297,8 +300,8 @@
             },
             text :  false
         }).on("click", function () {
-                $("#authent").trigger("submit");
-            });
+            $("#authent").trigger("submit");
+        });
         /* Init default application */
         window.setTimeout(function () {
             var defaultApplication;
@@ -320,8 +323,13 @@
             displayShortcut();
         }, 0);
         /* Password */
+        $(".js-user-button").on("mouseenter", function () {
+            $(this).addClass("ui-state-hover");
+        }).on("mouseleave", function () {
+            $(this).removeClass("ui-state-hover");
+        });
         window.setTimeout(function () {
-            $("#userButton").changePassword();
+            $(".js-user-button").changePassword();
         }, 0);
         /* resize*/
         $(window).on("resize", resizeIframe).on("hashchange", function () {
