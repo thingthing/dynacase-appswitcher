@@ -6,7 +6,7 @@
 
     window.app_switcher = window.app_switcher || {};
 
-    autoDisplayMenuTime = 700;
+    autoDisplayMenuTime = 850;
     autoHideSubMenuTime = 1000;
 
     /**
@@ -329,7 +329,7 @@
             $(this).removeClass("ui-state-hover");
         });
         window.setTimeout(function () {
-            $(".js-user-button").changePassword();
+            $(".js-user-button").passwordModifier();
         }, 0);
         /* resize*/
         $(window).on("resize", resizeIframe).on("hashchange", function () {
