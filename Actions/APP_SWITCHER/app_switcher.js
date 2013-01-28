@@ -173,13 +173,15 @@
      * Display the activated shortcut (hide the other)
      */
     displayShortcut = function () {
-        window.app_switcher.shortcuts = window.app_switcher.shortcuts || {};
-        $.each(window.app_switcher.shortcuts, function (key, value) {
-            var curentShortcut = $("#shortcut-" + key);
-            if (value) {
-                curentShortcut.removeClass("css-shortcut-element-hidden");
+        var shortcuts = "";
+        window.app_switcher.shortcuts = window.app_switcher.shortcuts || "";
+        shortcuts = window.app_switcher.shortcuts.split("|");
+        $.each($(".js-shortcut-element"), function () {
+            var $curentShortcut = $(this);
+            if ($.inArray($curentShortcut.data("appname"), shortcuts) > -1) {
+                $curentShortcut.removeClass("css-shortcut-element-hidden");
             } else {
-                curentShortcut.addClass("css-shortcut-element-hidden");
+                $curentShortcut.addClass("css-shortcut-element-hidden");
             }
         });
     };
@@ -189,7 +191,7 @@
      */
     updateShortcuts = function () {
         window.app_switcher.shortcuts = window.app_switcher.shortcuts || {};
-        handleAjaxRequest($.post("?app=APP_SWITCHER&action=SHORTCUT_APPLICATION", {shortcuts : JSON.stringify(window.app_switcher.shortcuts)}),
+        handleAjaxRequest($.post("?app=APP_SWITCHER&action=SHORTCUT_APPLICATION", {shortcuts : window.app_switcher.shortcuts}),
             $.noop,
             logError);
     };
@@ -260,8 +262,18 @@
             hideSubMenu();
         });
         $(".js-menu-shortcut").on("click", function () {
-            window.app_switcher.shortcuts = window.app_switcher.shortcuts || {};
-            window.app_switcher.shortcuts[$(this).data("appname")] = !(window.app_switcher.shortcuts[$(this).data("appname")]);
+            var shortcuts = [], currentApp = $(this).data("appname"), index;
+            window.app_switcher.shortcuts = window.app_switcher.shortcuts || "";
+            if (window.app_switcher.shortcuts) {
+                shortcuts =  window.app_switcher.shortcuts.split("|");
+            }
+            index = $.inArray(currentApp, shortcuts);
+            if (index < 0) {
+                shortcuts.push(currentApp);
+            } else {
+                shortcuts.splice(index, 1);
+            }
+            window.app_switcher.shortcuts = shortcuts.join("|");
             displayShortcut();
             updateShortcuts();
             hideMainMenu();
