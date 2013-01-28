@@ -24,7 +24,7 @@ function app_switcher(Action & $action)
     /**
      * Add widget code
      */
-    $action->lay->set("WIDGET_PASSWORD", $action->parent->getJsLink("CORE:dcpui.changepassword.js.xml", true));
+    $action->lay->set("WIDGET_PASSWORD", $action->parent->getJsLink("CORE:dcpui.passwordModifier.js.xml", true));
 
     /**
      * Test if can change password

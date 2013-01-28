@@ -3,10 +3,10 @@
 <head>
     <link rel="icon" href="CORE/Images/dynacase.ico">
     <link rel="SHORTCUT ICON" href="CORE/Images/dynacase.ico">
-    <link href="lib/jquery-ui/css/smoothness/jquery-ui.css?version=[WVERSION]" rel="stylesheet" type="text/css"/>
-    <link href="APP_SWITCHER/Layout/app_switcher.css?version=[VERSION]" rel="stylesheet" type="text/css"/>
+    <link href="lib/jquery-ui/css/smoothness/jquery-ui.css?wv=[WVERSION]" rel="stylesheet" type="text/css"/>
+    <link href="APP_SWITCHER/Layout/app_switcher.css?wv=[VERSION]" rel="stylesheet" type="text/css"/>
     <!--[if lt IE 8 ]>
-    <link href="APP_SWITCHER/Layout/app_switcher_ie.css?version=[VERSION]" rel="stylesheet" type="text/css"/>
+    <link href="APP_SWITCHER/Layout/app_switcher_ie.css?wv=[VERSION]" rel="stylesheet" type="text/css"/>
     <![endif]-->
     <meta charset=utf-8/>
     <title>[TEXT:APP_SWITCHER:Title] - [CORE_CLIENT]</title>
@@ -23,14 +23,19 @@
         </div>
     </div>
     <div class="css-logout css-header-right" title="[TEXT:APP_SWITCHER:Disconnect]">
-        <button id="disconnect"></button>
+        <button id="disconnect" class="css-disconnect-button"></button>
     </div>
     <div class="css-user-zone css-header-right">
         [IF DISPLAY_CHANGE_BUTTON]
-        <button id="userButton">[NAME]</button>
+        <button id="userButton" class="ui-button ui-state-default ui-corner-all css-user-button js-user-button ">
+            <div class="css-application-icon">
+                <img src="Images/app-switcher-user-picture.png" alt="[ICON_ALT]"/>
+            </div>
+            [NAME]
+        </button>
         [ENDIF DISPLAY_CHANGE_BUTTON]
         [IFNOT DISPLAY_CHANGE_BUTTON]
-            [NAME]
+        [NAME]
         [ENDIF DISPLAY_CHANGE_BUTTON]
     </div>
     [IF DISPLAY_SEARCH_ZONE]
@@ -42,7 +47,8 @@
     <div class="css-pined-application css-header-right">
         <ul class="css-shortcut-list">
             [BLOCK MENU_APPLICATIONS]
-            <li id="shortcut-[NAME]" data-appname="[NAME]" data-appurl="[URL]" class="css-shortcut-element css-shortcut-element-hidden js-shortcut-element"
+            <li id="shortcut-[NAME]" data-appname="[NAME]" data-appurl="[URL]"
+                class="css-shortcut-element css-shortcut-element-hidden js-shortcut-element"
                 title="[DESCRIPTION]">
                 <div class="css-application-icon">
                     <img src="[ICON_SRC]" alt="[ICON_ALT]"/>
@@ -76,12 +82,20 @@
     <div class="css-contextualMenu-content css-menu-content css-menu-content-hidden js-contextualMenu-content">
         <ul class="css-contextualMenu-list css-menu-list">
             <li class="js-description ui-widget-header css-menu-description css-contextualMenu-element"></li>
-            <li class="css-menu-element css-contextualMenu-element js-menu-element">[TEXT:APP_SWITCHER:Display]</li>
-            <li class="css-menu-element css-contextualMenu-element js-menu-reload">[TEXT:APP_SWITCHER:Reload]</li>
-            <li class="css-menu-element css-contextualMenu-element js-menu-open">[TEXT:APP_SWITCHER:Open in a new window]</li>
-            <li class="css-menu-element css-contextualMenu-element js-menu-default-application">[TEXT:APP_SWITCHER:Set as default application]
+            <li class="css-menu-element css-contextualMenu-element js-menu-element">
+                [TEXT:APP_SWITCHER:Display]
             </li>
-            <li class="css-menu-element css- css-contextualMenu-element menu-shortcut js-menu-shortcut">[TEXT:APP_SWITCHER:Add suppress shortcut]
+            <li class="css-menu-element css-contextualMenu-element js-menu-reload">
+                [TEXT:APP_SWITCHER:Reload]
+            </li>
+            <li class="css-menu-element css-contextualMenu-element js-menu-open">
+                [TEXT:APP_SWITCHER:Open in a new window]
+            </li>
+            <li class="css-menu-element css-contextualMenu-element js-menu-default-application">
+                [TEXT:APP_SWITCHER:Set as default application]
+            </li>
+            <li class="css-menu-element css- css-contextualMenu-element menu-shortcut js-menu-shortcut">
+                [TEXT:APP_SWITCHER:Add suppress shortcut]
             </li>
         </ul>
     </div>
@@ -97,11 +111,10 @@
 </form>
 <script>
     window.app_switcher = window.app_switcher || {};
-    window.app_switcher.shortcuts = [SHORTCUT_APPLICATION];
+    window.app_switcher.shortcuts = "[SHORTCUT_APPLICATION]";
 </script>
-<script src="lib/json2/json2.js?version=[WVERSION]"></script>
-<script src="lib/jquery/jquery.js?version=[WVERSION]"></script>
-<script src="lib/jquery-ui/js/jquery-ui.js?version=[WVERSION]"></script>
+<script src="lib/jquery/jquery.js?wv=[WVERSION]"></script>
+<script src="lib/jquery-ui/js/jquery-ui.js?wv=[WVERSION]"></script>
 <script src="[WIDGET_PASSWORD]"></script>
 <script src="APP_SWITCHER/Layout/app_switcher.js?version=[VERSION]"></script>
 </body>

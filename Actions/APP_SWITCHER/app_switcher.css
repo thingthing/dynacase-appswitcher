@@ -10,12 +10,13 @@ body {
     padding: 0;
     margin: 0;
     font-family: Helvetica, Arial, sans-serif;
+    font-size: 12px;
 }
 
 /* Content Zone */
 .css-content {
     position: absolute;
-    top: 1.5625em;
+    top: 2em;
     bottom: 0;
     left: 0;
     right: 0;
@@ -23,7 +24,7 @@ body {
     background-color: #fff;
     margin-left: 1px;
     padding: 5px;
-    margin-top: 2px;
+    margin-top: 3px;
 }
 
 .css-iframe-content {
@@ -36,8 +37,10 @@ body {
 
 /* Header zone */
 .css-header {
-    height: 1.5625em; /*25/16*/
-    line-height: 1.5625em;
+    height: 2em;
+    line-height: 2em;
+    padding-bottom: 2px;
+    box-shadow: inset 0px -2px 5px rgb(157, 183, 201);
 }
 
 .css-header-left {
@@ -73,7 +76,7 @@ body {
 
 .css-menu-content {
     position: absolute;
-    top: 1.5625em;
+    top: 2em;
     left: 0;
     margin-top: 2px;
     background-color: white;
@@ -97,6 +100,7 @@ body {
     display: block;
     min-width: 10em;
     z-index: 0;
+    border: 1px rgb(184, 184, 184) solid;
 }
 
 .css-menu-content-hidden {
@@ -115,6 +119,7 @@ body {
     padding-right: 15px;
     overflow-y: hidden;
     border: 1px white;
+    padding-left: 5px;
 }
 
 .css-menu-element-icon {
@@ -150,7 +155,7 @@ body {
 }
 
 .css-selected-application-content {
-    margin-left: 1em;
+    margin-left: 16px;
 }
 
 /* Text search elements */
@@ -181,7 +186,6 @@ body {
 }
 
 /* shortcut */
-
 .css-shortcut-element {
     display: inline-block;
     cursor: pointer;
@@ -195,4 +199,15 @@ body {
 
 .css-shortcut-element-hidden {
     display: none;
+}
+
+/* Disconnect */
+.css-disconnect-button {
+    height: 100%;
+}
+
+/* User button*/
+.css-user-button {
+    height: 100%;
+    padding: 0 10px;
 }

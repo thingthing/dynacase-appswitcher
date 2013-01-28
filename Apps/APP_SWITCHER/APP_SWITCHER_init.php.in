@@ -12,7 +12,7 @@ $app_const = array(
         "kind" => "text"
     ),
     "SHORTCUT_APPLICATION" => array(
-        "val" => "{}",
+        "val" => "",
         "descr" => N_("APP_SWITCHER:application present in application bar"),
         "user" => "Y",
         "kind" => "static"
