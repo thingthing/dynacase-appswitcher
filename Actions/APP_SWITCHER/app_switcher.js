@@ -112,7 +112,7 @@
     reloadApplication = function ($app) {
         var iframe = loadApplication($app);
         if (iframe[0].contentDocument.location.href !== "about:blank") {
-            iframe[0].contentDocument.location.reload();
+            iframe[0].contentDocument.location.href = $app.data('appurl');
         }
         return iframe;
     };
