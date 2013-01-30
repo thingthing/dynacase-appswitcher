@@ -2,12 +2,16 @@
     "use strict";
     var resizeIframe, getApplicationIFrame, loadApplication, loadSearchApplication, displaySubMenu, hideSubMenu,
         reloadApplication, hideMainMenu, updateDefaultApplication, displayShortcut, updateShortcuts, handleAjaxRequest,
-        logError, autoDisplayMenuTime, autoHideSubMenuTime;
+        logError, autoDisplayMenuTime, autoHideSubMenuTime, generateID;
 
     window.app_switcher = window.app_switcher || {};
 
     autoDisplayMenuTime = 850;
     autoHideSubMenuTime = 1000;
+
+    generateID = function generateID() {
+        return 'xxxxxxxx'.replace(/[xy]/g, function(c) {var r = Math.random()*16|0,v=c=='x'?r:r&0x3|0x8;return v.toString(16);});
+    };
 
     /**
      * Wrap ajax request
@@ -68,7 +72,7 @@
         iframeId = 'app-iframe-' + appName;
         applicationIframe = $('#' + iframeId);
         if (!applicationIframe.length) {
-            applicationIframe = $('<iframe class="css-iframe-content" id="' + iframeId + '" src="' + appUrl + '"></iframe>')
+            applicationIframe = $('<iframe class="css-iframe-content" name="'+appName+'_'+generateID()+'" id="' + iframeId + '" src="' + appUrl + '"></iframe>')
                 .hide()
                 .appendTo('#content');
         }
@@ -112,7 +116,7 @@
     reloadApplication = function ($app) {
         var iframe = loadApplication($app);
         if (iframe[0].contentDocument.location.href !== "about:blank") {
-            iframe[0].contentDocument.location.reload();
+            iframe[0].contentDocument.location.href = $app.data('appurl');
         }
         return iframe;
     };
