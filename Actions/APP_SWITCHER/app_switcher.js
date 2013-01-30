@@ -2,7 +2,9 @@
     "use strict";
     var resizeIframe, getApplicationIFrame, loadApplication, loadSearchApplication, displaySubMenu, hideSubMenu,
         reloadApplication, hideMainMenu, updateDefaultApplication, displayShortcut, updateShortcuts, handleAjaxRequest,
-        logError, autoDisplayMenuTime, autoHideSubMenuTime, generateID;
+        logError, autoDisplayMenuTime, autoHideSubMenuTime, generateID, modeHash;
+
+    modeHash = "onhashchange" in window;
 
     window.app_switcher = window.app_switcher || {};
 
@@ -97,7 +99,9 @@
         applicationIframe.show();
         window.setTimeout(resizeIframe, 0);
         /* Change the state of the page (selected application, #)*/
-        window.location.hash = appName;
+        if (modeHash) {
+            window.location.hash = appName;
+        }
         window.app_switcher.selectedApp = appName;
         document.title = $("#title-" + appName).text() + " - " + $("body").data("clientname");
         $selectedContent.empty().append(loadedMenuApp.find(".js-menu-element-content").clone());
@@ -114,9 +118,9 @@
      * @return {jQuery}
      */
     reloadApplication = function ($app) {
-        var iframe = loadApplication($app);
-        if (iframe[0].contentDocument.location.href !== "about:blank") {
-            iframe[0].contentDocument.location.href = $app.data('appurl');
+        var iframe = loadApplication($app), contentDocument = iframe[0].contentDocument || iframe[0].contentWindow.document;
+        if (contentDocument.location.href !== "about:blank") {
+            contentDocument.location.href = $app.data('appurl');
         }
         return iframe;
     };
@@ -309,7 +313,7 @@
         /* Init default application */
         window.setTimeout(function () {
             var defaultApplication;
-            if (window.location.hash) {
+            if (modeHash && window.location.hash) {
                 /*Suppress the hash*/
                 defaultApplication = window.location.hash.substr(1);
             } else {
@@ -336,11 +340,13 @@
             $(".js-user-button").passwordModifier();
         }, 0);
         /* resize*/
-        $(window).on("resize", resizeIframe).on("hashchange", function () {
-            var hash = window.location.hash.slice(1);
-            if (hash !== window.app_switcher.selectedApp) {
-                $("#menu-" + hash).trigger("click");
-            }
-        });
+        if (modeHash) {
+            $(window).on("resize", resizeIframe).on("hashchange", function () {
+                var hash = window.location.hash.slice(1);
+                if (hash !== window.app_switcher.selectedApp) {
+                    $("#menu-" + hash).trigger("click");
+                }
+            });
+        }
     });
 }($, document, window));

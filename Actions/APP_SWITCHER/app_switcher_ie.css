@@ -8,6 +8,7 @@
     width:15em;
     word-wrap: break-word;
     height: auto;
+    background-color: white;
 }
 
 .css-fold-menu {
@@ -32,6 +33,11 @@
     display: inline;
 }
 
+.css-application-icon img {
+    height: 24px;
+    width : 24px;
+}
+
 .css-shortcut-element {
     zoom: 1;
     display: inline;
@@ -48,4 +54,8 @@
 
 .css-content {
     height: auto;
+}
+
+.css-user-icon {
+    display: none;
 }
