@@ -5,6 +5,7 @@
 progdir=$(pubdir)/programs
 appname = programs
 include $(utildir)/PubRule
+include $(localBuildRule)/localBuildRule
 
 pages_sh = $(patsubst %.bash,$(progdir)/%,$(wildcard *.bash))
 pages_php = $(patsubst %.php,$(progdir)/%,$(wildcard *.php))
