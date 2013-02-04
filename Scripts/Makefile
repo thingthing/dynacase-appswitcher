@@ -5,6 +5,7 @@
 
 
 include $(utildir)/PubRule
+include $(localBuildRule)/localBuildRule
 
 pages_fdl = $(patsubst %.php,$(pubdir)/$(applib)/%.php,$(wildcard *.php))
 
@@ -15,4 +16,4 @@ $(pubdir)/$(applib)/%.php: %.php $(pubdir)/API
 	cd $(pubdir)/API; \
 	ln -sf ../$(appname)/$< .
 
-publish: $(pubdir)/API $(pages_fdl) 
+publish: $(pubdir)/API $(pages_fdl)

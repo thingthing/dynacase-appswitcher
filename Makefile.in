@@ -1,6 +1,7 @@
 PACKAGE = @PACKAGE@
 VERSION = @VERSION@
 utildir = @PUBRULE@
+localBuildRule = @LOCAL_BUILD_RULE@
 pubdir = @prefix@
 srcdir = @srcdir@
 applib = FDL
@@ -8,15 +9,18 @@ appname = @APPNAME@
 TAR = tar
 GZIP_ENV = --best
 
-export pubdir utildir appname applib PACKAGE
+export pubdir utildir appname applib PACKAGE localBuildRule
 
 SUBDIR= Actions Apps Images Programs Scripts
 
 include $(utildir)/PubRule
+include $(localBuildRule)/localBuildRule
 
 # For all families traduction
 # TRANSCSV += $(shell find ./Families -name "STRUCT_*.csv")
-TRANSCSV +=
+
+$(pubdir)/$(style)/$(appname)/Layout/%.html : %.html $(pubdir)/$(style)/$(appname)/Layout
+	$(installcp) $< $@
 
 clean:
 	/bin/rm -f *.*~ config.* Makefile configure $(appname)_init.php info.xml $(PACKAGE)-*webinst
