@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<module name="@PACKAGE@" disabled="no" version="@VERSION@"
-    release="@RELEASE@">
+<module name="@PACKAGE@" version="@VERSION@"
+    release="@RELEASE@" license="@LICENSE@">
 
     <description>An application switcher for Dynacase Platform</description>
 
