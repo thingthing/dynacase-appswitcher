@@ -59,7 +59,6 @@ SELECT
     application.icon,
     application.short_name,
     application.description,
-    application.access_free,
     application.with_frame,
     action.acl
 FROM application
@@ -79,11 +78,9 @@ SQL;
     $displayableApplications = array();
 
     foreach ($applications as $currentApplication) {
-        if ($currentApplication["access_free"] !== "Y") {
-            if ($action->user->id != 1) { // no control for user Admin
-                if (!$action->hasPermission($currentApplication["acl"], $currentApplication["id"])) {
-                    continue;
-                }
+        if ($action->user->id != 1) { // no control for user Admin
+            if (!$action->hasPermission($currentApplication["acl"], $currentApplication["id"])) {
+                continue;
             }
         }
         $appUrl = "?app=" . $currentApplication["name"];
