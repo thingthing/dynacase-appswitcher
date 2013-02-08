@@ -9,7 +9,6 @@ $app_desc = array(
     "name" => "APP_SWITCHER",
     "short_name" => N_("APP_SWITCHER:APP_SWITCHER"),
     "description" => N_("APP_SWITCHER:Default app switcher for DCP"),
-    "access_free" => "N",
     "icon" => "app_switcher.png",
     "displayable" => "N",
     "with_frame" => "N",
