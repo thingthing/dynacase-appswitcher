@@ -14,7 +14,7 @@
 <body data-defaultapplication="[DEFAULT_APPLICATION_NAME]" data-clientname="[CORE_CLIENT]">
 <div class="css-header ui-widget-header">
     <div class="css-menu css-header-left js-menu">
-        <div class="css-selected-application">
+        <div class="ui-button ui-state-default ui-corner-all css-selected-application">
             <span class="css-fold-menu js-fold-menu ui-icon ui-icon-triangle-1-e"></span>
 
             <div id="selected-application" class="css-selected-application-content">
@@ -41,7 +41,9 @@
     [IF DISPLAY_SEARCH_ZONE]
     <div class="css-search-zone css-header-right">
         <input id="search" type="text" class="css-text-search ui-corner-all" placeholder="[TEXT:APP_SWITCHER:Search]"/>
-        <span class="css-icon-search ui-icon ui-icon-search"></span>
+        <span class="ui-button ui-state-default ui-corner-right css-icon-search ">
+          <span class="ui-icon ui-icon-search"></span>
+	</span>
     </div>
     [ENDIF DISPLAY_SEARCH_ZONE]
     <div class="css-pined-application css-header-right">
@@ -51,7 +53,7 @@
                 class="css-shortcut-element css-shortcut-element-hidden js-shortcut-element"
                 title="[DESCRIPTION]">
                 <div class="css-application-icon">
-                    <img src="[ICON_SRC]" alt="[ICON_ALT]"/>
+                    <img class="ui-button" src="[ICON_SRC]" alt="[ICON_ALT]"/>
                 </div>
             </li>
             [ENDBLOCK MENU_APPLICATIONS]
@@ -67,7 +69,7 @@
         <ul class="css-menu-list js-menu-list">
             [BLOCK MENU_APPLICATIONS]
             <li id="menu-[NAME]" data-appname="[NAME]" data-appurl="[URL]"
-                class="css-menu-element js-menu-element js-menu-open-submenu" data-description="[DESCRIPTION]">
+                class="css-menu-element js-menu-element js-menu-open-submenu ui-button" data-description="[DESCRIPTION]">
                 <div class="css-menu-element-content js-menu-element-content">
                     <div class="css-application-icon">
                         <img src="[ICON_SRC]" alt="[ICON_ALT]"/>
@@ -82,19 +84,19 @@
     <div class="css-contextualMenu-content css-menu-content css-menu-content-hidden js-contextualMenu-content">
         <ul class="css-contextualMenu-list css-menu-list">
             <li class="js-description ui-widget-header css-menu-description css-contextualMenu-element"></li>
-            <li class="css-menu-element css-contextualMenu-element js-menu-element">
+            <li class="ui-button css-menu-element css-contextualMenu-element js-menu-element">
                 [TEXT:APP_SWITCHER:Display]
             </li>
-            <li class="css-menu-element css-contextualMenu-element js-menu-reload">
+            <li class="ui-button css-menu-element css-contextualMenu-element js-menu-reload">
                 [TEXT:APP_SWITCHER:Reload]
             </li>
-            <li class="css-menu-element css-contextualMenu-element js-menu-open">
+            <li class="ui-button css-menu-element css-contextualMenu-element js-menu-open">
                 [TEXT:APP_SWITCHER:Open in a new window]
             </li>
-            <li class="css-menu-element css-contextualMenu-element js-menu-default-application">
+            <li class="ui-button css-menu-element css-contextualMenu-element js-menu-default-application">
                 [TEXT:APP_SWITCHER:Set as default application]
             </li>
-            <li class="css-menu-element css- css-contextualMenu-element menu-shortcut js-menu-shortcut">
+            <li class="ui-button css-menu-element css- css-contextualMenu-element menu-shortcut js-menu-shortcut">
                 [TEXT:APP_SWITCHER:Add suppress shortcut]
             </li>
         </ul>

@@ -10,13 +10,13 @@ body {
     padding: 0;
     margin: 0;
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 12px;
+    font-size: 11px;
 }
 
 /* Content Zone */
 .css-content {
     position: absolute;
-    top: 2em;
+    top: 3.4em;
     bottom: 0;
     left: 0;
     right: 0;
@@ -25,6 +25,7 @@ body {
     margin-left: 1px;
     padding: 5px;
     margin-top: 3px;
+    border-top: 1px solid #999;
 }
 
 .css-iframe-content {
@@ -37,12 +38,9 @@ body {
 
 /* Header zone */
 .css-header {
-    height: 2em;
-    line-height: 2em;
-    padding-bottom: 2px;
-    -webkit-box-shadow: inset 0px -2px 5px rgba(0, 0, 0, 0.17);
-    -moz-box-shadow: inset 0px -2px 5px rgba(0, 0, 0, 0.17);
-    box-shadow: inset 0px -2px 5px rgba(0, 0, 0, 0.17);
+    height: 2.5em;
+    line-height: 2.5em;
+    padding: 5px;
 }
 
 .css-header-left {
@@ -53,8 +51,8 @@ body {
 
 .css-header-right {
     float: right;
-    margin-left: 10px;
-    height: 100%;
+    margin-left: 5px;
+    height: 2.5em;
 }
 
 .css-clear-all {
@@ -63,6 +61,12 @@ body {
 
 .css-application-icon {
     display: inline-block;
+}
+.css-shortcut-list .css-application-icon {
+    opacity: 0.5;
+}
+.css-shortcut-list .css-application-icon:hover {
+    opacity: 1;
 }
 
 .css-application-icon img {
@@ -77,13 +81,13 @@ body {
 
 .css-menu-content {
     position: absolute;
-    top: 2em;
+    top: 3.4em;
     left: 0;
     margin-top: 2px;
     background-color: white;
-    -webkit-box-shadow: 5px 5px 16px rgba(50, 50, 50, 0.82);
-    -moz-box-shadow: 5px 5px 16px rgba(50, 50, 50, 0.82);
-    box-shadow: 5px 5px 16px rgba(50, 50, 50, 0.82);
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.12);
+    -webkit-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.12);
 }
 
 .css-main-menu-content {
@@ -108,21 +112,32 @@ body {
     left: -900px;
 }
 
+ul.css-contextualMenu-list {
+  border-radius: 3px;
+  padding:3px;
+}
 .css-contextualMenu-content {
     z-index: 9999;
 }
 
 .css-menu-element {
+    display: block;
+    text-align: left;
     position: relative;
     cursor: pointer;
-    height: 2em;
-    line-height: 2em;
+    height: 2.5em;
+    line-height: 2.5em;
     padding-right: 15px;
     overflow-y: hidden;
     border: 1px white;
     padding-left: 5px;
+    margin:2px;
+    border: 1px solid #eee;
 }
-
+.css-contextualMenu-element.css-menu-element {
+    border: 1px solid #fff;
+    
+}
 .css-menu-element-icon {
     position: absolute;
     right: 0;
@@ -135,8 +150,8 @@ body {
 }
 
 .css-contextualMenu-element {
-    height: 1.5em;
-    line-height: 1.5em;
+    height: 2em;
+    line-height: 2em;
 }
 
 .menu-shortcut {
@@ -156,7 +171,9 @@ body {
 }
 
 .css-selected-application-content {
-    margin-left: 16px;
+    margin-left: 2em;
+    margin-right: 1em;
+    font-weight: bold;
 }
 
 /* Text search elements */
@@ -166,14 +183,21 @@ body {
 
 .css-icon-search {
     position: absolute;
-    right: 0.1em;
-    top: 0.3em;
+    right: -1px;
+    top: 0;
     cursor: pointer;
+    height: 2.1em;
+    width: 2.1em;
+    border-left: 1px solid lightGrey;
+    padding-top: 0.3em;
 }
 
 .css-text-search {
+    height: 1.7em;
     background: whitesmoke;
     width: 8em;
+    border: 1px solid lightGrey;
+    padding: 2px;
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     -ms-transition: all 0.2s ease-in-out;
@@ -193,7 +217,7 @@ body {
 }
 
 .css-shortcut-list {
-    margin: 0;
+    margin: 0 10px 0 0;
     padding: 0;
     list-style: none;
 }
@@ -224,4 +248,13 @@ body {
 .css-user-icon img{
     height: 100%;
     width: auto;
+}
+
+
+#passwordDialogWrapper input[type=password] {
+  width: 100%;
+}
+
+.ui-state-error {
+    padding: 5px;
 }
