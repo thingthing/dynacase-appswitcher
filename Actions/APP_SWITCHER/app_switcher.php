@@ -90,7 +90,7 @@ SQL;
         $displayableApplications[$currentApplication["name"]] = array(
             "NAME" => $currentApplication["name"],
             "URL" => $appUrl,
-            "ICON_SRC" => $action->parent->getImageLink($currentApplication["icon"], false, 24),
+            "ICON_SRC" => $action->parent->getImageLink($currentApplication["icon"], false, 20),
             "ICON_ALT" => $currentApplication["name"],
             "TITLE" => _($currentApplication["short_name"]),
             "DESCRIPTION" => _($currentApplication["description"])
