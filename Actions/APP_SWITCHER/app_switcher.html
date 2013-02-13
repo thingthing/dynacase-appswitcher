@@ -25,6 +25,19 @@
             </div>
         </div>
     </div>
+    <div class="css-pined-application css-header-left">
+        <ul class="css-shortcut-list">
+            [BLOCK MENU_APPLICATIONS]
+            <li id="shortcut-[NAME]" data-appname="[NAME]" data-appurl="[URL]"
+                class="css-shortcut-element css-shortcut-element-hidden js-shortcut-element"
+                title="[DESCRIPTION]">
+                <div class="css-application-icon">
+                    <img class="ui-button" src="[ICON_SRC]" alt="[ICON_ALT]"/>
+                </div>
+            </li>
+            [ENDBLOCK MENU_APPLICATIONS]
+        </ul>
+    </div>
     <div class="css-logout css-header-right" title="[TEXT:APP_SWITCHER:Disconnect]">
         <button id="disconnect" class="css-disconnect-button"></button>
     </div>
@@ -43,25 +56,12 @@
     </div>
     [IF DISPLAY_SEARCH_ZONE]
     <div class="css-search-zone css-header-right">
-        <input id="search" type="text" class="css-text-search ui-corner-all" placeholder="[TEXT:APP_SWITCHER:Search]"/>
-        <span class="ui-button ui-state-default ui-corner-right css-icon-search ">
-          <span class="ui-icon ui-icon-search"></span>
-	</span>
+       <input id="search" type="text" class="ui-state-default css-text-search ui-corner-all" placeholder="[TEXT:APP_SWITCHER:Search]"/>
+       <span class="css-icon-search ">
+         <span class="ui-icon ui-icon-search"></span>
+       </span>
     </div>
     [ENDIF DISPLAY_SEARCH_ZONE]
-    <div class="css-pined-application css-header-right">
-        <ul class="css-shortcut-list">
-            [BLOCK MENU_APPLICATIONS]
-            <li id="shortcut-[NAME]" data-appname="[NAME]" data-appurl="[URL]"
-                class="css-shortcut-element css-shortcut-element-hidden js-shortcut-element"
-                title="[DESCRIPTION]">
-                <div class="css-application-icon">
-                    <img class="ui-button" src="[ICON_SRC]" alt="[ICON_ALT]"/>
-                </div>
-            </li>
-            [ENDBLOCK MENU_APPLICATIONS]
-        </ul>
-    </div>
     <div class="ui-helper-clearfix">
     </div>
 </div>
