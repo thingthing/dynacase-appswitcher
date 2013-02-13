@@ -1,18 +1,23 @@
 (function ($, document, window) {
     "use strict";
-    var resizeIframe, getApplicationIFrame, loadApplication, loadSearchApplication, displaySubMenu, hideSubMenu,
-        reloadApplication, hideMainMenu, updateDefaultApplication, displayShortcut, updateShortcuts, handleAjaxRequest,
-        logError, autoDisplayMenuTime, autoHideSubMenuTime, generateID, modeHash;
+    var resizeIframe, getApplicationIFrame, loadApplication, loadSearchApplication,
+        mainMenuDisplay, toogleMainMenu, hideMainMenu, showMainMenu, setMainMenuAutoHideTimeOut, autoHideMainMenuTime,
+        displaySubMenu, setSubMenuAutoHideTimeOut, hideSubMenu, autoDisplayMenuTime, autoHideSubMenuTime,
+        reloadApplication, updateDefaultApplication,
+        displayShortcut, updateShortcuts, handleAjaxRequest,
+        logError, generateID, modeHash;
 
-    modeHash = "onhashchange" in window;
+    mainMenuDisplay = false;
+    //noinspection JSUnresolvedVariable
+    modeHash = window.onhashchange !== undefined;
 
     window.app_switcher = window.app_switcher || {};
 
     autoDisplayMenuTime = 850;
-    autoHideSubMenuTime = 1000;
+    autoHideMainMenuTime = autoHideSubMenuTime = 1000;
 
     generateID = function generateID() {
-        return 'xxxxxxxx'.replace(/[xy]/g, function(c) {var r = Math.random()*16|0,v=c=='x'?r:r&0x3|0x8;return v.toString(16);});
+        return 'xxxxxxxx'.replace(/[xy]/g, function (c) {var r = Math.random()*16|0,v=c=='x'?r:r&0x3|0x8;return v.toString(16);});
     };
 
     /**
@@ -41,13 +46,14 @@
         ).then(success, fail);
     };
 
-    logError = function logError(err) {
+    window.logError = logError = function logError(err) {
         err = err.error || err;
         if (window.console) {
             window.console.log(err);
-        } else {
-            window.alert(err);
         }
+        $('<div><div class="ui-state-error"><p>'+
+            '<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>' +
+            err + '</p></div></div>').dialog({title : window.app_switcher.errorTitle});
     };
 
     /**
@@ -56,10 +62,10 @@
     resizeIframe = function resizeIframe() {
         var iframeHeight, $content;
         $content = $("#content");
-        iframeHeight = $(window).height()
-            - $content.offset().top
-            - parseInt($content.css("padding-top"), 10)
-            - parseInt($content.css("padding-bottom"), 10);
+        iframeHeight = $(window).height() -
+            $content.offset().top -
+            parseInt($content.css("padding-top"), 10) -
+            parseInt($content.css("padding-bottom"), 10);
         $("iframe", $('#content')).height(iframeHeight - 5);
     };
     /**
@@ -74,7 +80,8 @@
         iframeId = 'app-iframe-' + appName;
         applicationIframe = $('#' + iframeId);
         if (!applicationIframe.length) {
-            applicationIframe = $('<iframe class="css-iframe-content" name="'+appName+'_'+generateID()+'" id="' + iframeId + '" src="' + appUrl + '"></iframe>')
+            applicationIframe = $('<iframe class="css-iframe-content" name="' +
+                appName + '_' + generateID() + '" id="' + iframeId + '" src="' + appUrl + '"></iframe>')
                 .hide()
                 .appendTo('#content');
         }
@@ -117,7 +124,7 @@
      * @param $app
      * @return {jQuery}
      */
-    reloadApplication = function ($app) {
+    reloadApplication = function reloadApplication($app) {
         var iframe = loadApplication($app), contentDocument = iframe[0].contentDocument || iframe[0].contentWindow.document;
         if (contentDocument.location.href !== "about:blank") {
             contentDocument.location.href = $app.data('appurl');
@@ -130,7 +137,7 @@
      *
      * @param $searchElement the search input
      */
-    loadSearchApplication = function ($searchElement) {
+    loadSearchApplication = function loadSearchApplication($searchElement) {
         var $searchApplication, appurl;
         appurl = $searchElement.data('appurl');
         $searchElement.data('appurl', 'about:blank');
@@ -146,17 +153,35 @@
      * @param $rootElement
      */
     displaySubMenu = function displaySubMenu($rootElement) {
-        var top, left, rootPosition, $contextualMenu = $(".js-contextualMenu-content"), timeoutid = $contextualMenu.data("timeoutid");
+        var top, left, rootPosition, $contextualMenu = $(".js-contextualMenu-content"), timeOutId = $contextualMenu.data("timeoutid");
 
-        if (timeoutid) {
-            window.clearInterval(timeoutid);
+        if (timeOutId) {
+            window.clearInterval(timeOutId);
         }
+
         rootPosition = $rootElement.offset();
         top = rootPosition.top - 2;
         left = rootPosition.left + $rootElement.outerWidth(true);
         $contextualMenu.find(".js-description").text($rootElement.data("description"));
         $contextualMenu.find("li").data({"appurl" : $rootElement.data("appurl"), "appname" : $rootElement.data("appname")});
         $contextualMenu.css({ top : top, left : left}).removeClass("css-menu-content-hidden").data("timeoutid", "");
+    };
+
+    /**
+     * Set a timeout to autohide submenu
+     *
+     * @param $contextualMenu
+     */
+    setSubMenuAutoHideTimeOut = function setSubMenuAutoHideTimeOut($contextualMenu) {
+        var timeOutId = $contextualMenu.data("timeoutid");
+
+        if (timeOutId) {
+            window.clearInterval(timeOutId);
+        }
+        timeOutId = window.setTimeout(function () {
+            hideSubMenu();
+        }, autoHideSubMenuTime);
+        $contextualMenu.data("timeoutid", timeOutId);
     };
 
     /**
@@ -172,18 +197,58 @@
         $contextualMenu.addClass("css-menu-content-hidden").data("timeoutid", "").css("left", "");
     };
 
+    toogleMainMenu = function toogleMainMenu() {
+        mainMenuDisplay = !mainMenuDisplay;
+        if (mainMenuDisplay) {
+            showMainMenu();
+        } else {
+            hideMainMenu();
+        }
+    };
+
+    showMainMenu = function showMainMenu() {
+        var mainMenu = $(".js-menu-content");
+        mainMenuDisplay = true;
+        setMainMenuAutoHideTimeOut(mainMenu);
+        $(".js-fold-menu").removeClass("ui-icon-triangle-1-e").addClass("ui-icon-triangle-1-s");
+        mainMenu.removeClass("css-menu-content-hidden");
+    };
+
     /**
      * Hide the main menu
      */
-    hideMainMenu = function () {
+    hideMainMenu = function hideMainMenu() {
+        mainMenuDisplay = false;
         $(".js-fold-menu").addClass("ui-icon-triangle-1-e").removeClass("ui-icon-triangle-1-s");
         $(".js-menu-content").addClass("css-menu-content-hidden");
     };
 
     /**
+     * Set a timeout to autohide mainmenu
+     *
+     * @param $mainMenu
+     * @param onlyDesactivate if true only desactivate
+     */
+    setMainMenuAutoHideTimeOut = function setMainMenuAutoHideTimeOut($mainMenu, onlyDesactivate) {
+        var timeOutId = $mainMenu.data("main-menu-timeoutid");
+
+        if (timeOutId) {
+            window.clearInterval(timeOutId);
+        }
+        if (onlyDesactivate) {
+            timeOutId = "";
+        } else {
+            timeOutId = window.setTimeout(function () {
+                hideMainMenu();
+            }, autoHideMainMenuTime);
+        }
+        $mainMenu.data("main-menu-timeoutid", timeOutId);
+    };
+
+    /**
      * Display the activated shortcut (hide the other)
      */
-    displayShortcut = function () {
+    displayShortcut = function displayShortcut() {
         var shortcuts = "";
         window.app_switcher.shortcuts = window.app_switcher.shortcuts || "";
         shortcuts = window.app_switcher.shortcuts.split("|");
@@ -200,7 +265,7 @@
     /**
      * Save the selected shortcut in a user param
      */
-    updateShortcuts = function () {
+    updateShortcuts = function updateShortcuts() {
         window.app_switcher.shortcuts = window.app_switcher.shortcuts || {};
         handleAjaxRequest($.post("?app=APP_SWITCHER&action=SHORTCUT_APPLICATION", {shortcuts : window.app_switcher.shortcuts}),
             $.noop,
@@ -212,66 +277,78 @@
      *
      * @param applicationName
      */
-    updateDefaultApplication = function (applicationName) {
+    updateDefaultApplication = function updateDefaultApplication(applicationName) {
         handleAjaxRequest($.get("?app=APP_SWITCHER&action=SET_DEFAULT_APPLICATION", {defaultApplication : applicationName}),
             $.noop,
             logError);
     };
 
     $(document).ready(function () {
-        /* Configure menu */
+        /* Display main menu event */
         $(".js-menu").on("click", function () {
-            $(".js-menu-content").toggleClass("css-menu-content-hidden");
-            $(".js-fold-menu").toggleClass("ui-icon-triangle-1-e ui-icon-triangle-1-s");
+            toogleMainMenu();
             hideSubMenu();
         });
+        /* Main menu display application on click*/
         $(".js-menu-element").on("click", function () {
             loadApplication($(this));
         });
+        $(".js-menu-content").on("mouseenter", function () {
+            setMainMenuAutoHideTimeOut($(this), true);
+        }).on("mouseleave", function () {
+            setMainMenuAutoHideTimeOut($(this), false);
+        });
+        /* Main menu display submenu timeout */
         $(".js-menu-open-submenu").on("mouseenter", function () {
-            var timeOutId, $this = $(this);
+            var autoDisplayTimeOutId, $this = $(this);
             hideSubMenu();
-            timeOutId = window.setTimeout(function () {
+            autoDisplayTimeOutId = window.setTimeout(function () {
                 displaySubMenu($this);
             }, autoDisplayMenuTime);
-            $this.data("timeoutid", timeOutId);
+            $this.data("auto-display-timeoutid", autoDisplayTimeOutId);
         }).on("mouseleave", function () {
-            var $this = $(this), timeOutId = $this.data("timeoutid");
+            var $this = $(this), timeOutId = $this.data("auto-display-timeoutid");
             if (timeOutId) {
                 window.clearInterval(timeOutId);
             }
-            $this.data("timeoutid", "");
+            $this.data("auto-display-timeoutid", "");
+            setSubMenuAutoHideTimeOut($(".js-contextualMenu-content"));
         });
+        /* Menu element state-focus */
         $(".css-menu-element").on("mouseenter", function () {
             $(this).addClass("ui-state-focus");
         }).on("mouseleave", function () {
             $(this).removeClass("ui-state-focus");
         });
+        /* Contextual menu display hide event */
         $(".js-contextualMenu-content").on("mouseleave", function () {
-            var timeOutId, $this = $(this);
-            timeOutId = window.setTimeout(function () {
-                hideSubMenu();
-            }, autoHideSubMenuTime);
-            $this.data("timeoutid", timeOutId);
+            setSubMenuAutoHideTimeOut($(this));
+            setMainMenuAutoHideTimeOut($(".js-menu-content"), false);
         }).on("mouseenter", function () {
             var timeOutId = $(this).data("timeoutid");
+            setMainMenuAutoHideTimeOut($(".js-menu-content"), true);
             if (timeOutId) {
                 window.clearInterval(timeOutId);
             }
         });
+        /* Sub menu event */
+        /* Reload current element */
         $(".js-menu-reload").on("click", function () {
             reloadApplication($(this));
         });
+        /* Open in a window/tab the current app*/
         $(".js-menu-open").on("click", function () {
             window.open($(this).data("appurl"));
             hideMainMenu();
             hideSubMenu();
         });
+        /* Set as default application the current application */
         $(".js-menu-default-application").on("click", function () {
             updateDefaultApplication($(this).data("appname"));
             hideMainMenu();
             hideSubMenu();
         });
+        /* Toggle menu shortcut state */
         $(".js-menu-shortcut").on("click", function () {
             var shortcuts = [], currentApp = $(this).data("appname"), index;
             window.app_switcher.shortcuts = window.app_switcher.shortcuts || "";
@@ -336,6 +413,7 @@
         }).on("mouseleave", function () {
             $(this).removeClass("ui-state-hover");
         });
+        /* Init password modifier */
         window.setTimeout(function () {
             $(".js-user-button").passwordModifier();
         }, 0);
