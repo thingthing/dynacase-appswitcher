@@ -97,6 +97,8 @@
      */
     loadApplication = function loadApplication($app) {
         var appName, applicationIframe, appurl, $selectedContent = $("#selected-application"), loadedMenuApp;
+        hideMainMenu();
+        hideSubMenu();
         appName = $app.data('appname');
         appurl = $app.data('appurl');
         loadedMenuApp = $("#menu-" + appName);
@@ -113,8 +115,6 @@
         document.title = $("#title-" + appName).text() + " - " + $("body").data("clientname");
         $selectedContent.empty().append(loadedMenuApp.find(".js-menu-element-content").clone());
         loadedMenuApp.addClass("ui-state-highlight").siblings().removeClass("ui-state-highlight");
-        hideMainMenu();
-        hideSubMenu();
         return applicationIframe;
     };
 
@@ -209,7 +209,6 @@
     showMainMenu = function showMainMenu() {
         var mainMenu = $(".js-menu-content");
         mainMenuDisplay = true;
-        setMainMenuAutoHideTimeOut(mainMenu);
         $(".js-fold-menu").removeClass("ui-icon-triangle-1-e").addClass("ui-icon-triangle-1-s");
         mainMenu.removeClass("css-menu-content-hidden");
     };
@@ -288,6 +287,12 @@
         $(".js-menu").on("click", function () {
             toogleMainMenu();
             hideSubMenu();
+        }).on("mouseenter", function () {
+            $(this).addClass("ui-state-focus");
+            setMainMenuAutoHideTimeOut($(".js-menu-content"), true);
+        }).on("mouseleave", function() {
+            $(this).removeClass("ui-state-focus");
+            setMainMenuAutoHideTimeOut($(".js-menu-content"), false);
         });
         /* Main menu display application on click*/
         $(".js-menu-element").on("click", function () {
