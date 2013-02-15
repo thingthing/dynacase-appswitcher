@@ -13,6 +13,8 @@
 
     window.app_switcher = window.app_switcher || {};
 
+    window.dcp = window.dcp || {};
+
     autoDisplayMenuTime = 850;
     autoHideMainMenuTime = autoHideSubMenuTime = 1000;
 
@@ -46,14 +48,25 @@
         ).then(success, fail);
     };
 
-    window.logError = logError = function logError(err) {
+    logError = function logError(err) {
         err = err.error || err;
-        if (window.console) {
+        if (window.console && $.isFunction(window.console.log)) {
             window.console.log(err);
         }
         $('<div><div class="ui-state-error"><p>'+
             '<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>' +
-            err + '</p></div></div>').dialog({title : window.app_switcher.errorTitle});
+            err + '</p></div></div>').dialog({title : window.app_switcher.errorTitle, modal : true});
+    };
+
+    window.dcp.displayWarningMessage = function displayWarningMessage(message) {
+        $('<div><div class="ui-state-highlight"><p>'+
+            '<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>' +
+            $('<div/>').text(message).html().replace(/\n/g,"<br/>","g")+'</p></div></div>')
+        .dialog({
+            modal:true,
+            title:'<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>'+window.app_switcher.infoTitle,
+            position : { at : 'top'}
+            });
     };
 
     /**
