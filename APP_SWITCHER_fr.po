@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: TEMPLATE\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-25 11:55+0100\n"
+"POT-Creation-Date: 2013-02-15 10:00+0100\n"
 "PO-Revision-Date: 2010-01-12 15:35+0100\n"
 "Last-Translator: Jean Martin <jean.martin@somewhere.org>\n"
 "Language-Team: French <distrib@somewhere.org>\n"
@@ -12,50 +12,82 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: Apps/APP_SWITCHER/APP_SWITCHER.app:10
 msgid "APP_SWITCHER:APP_SWITCHER"
 msgstr "Application de sélection d'application"
 
+#: Apps/APP_SWITCHER/APP_SWITCHER.app:21
 msgid "APP_SWITCHER:APP_SWITCHER access"
 msgstr "ACL : Application de sélection d'application"
 
+#: tempCatalog.php:9
+msgid "APP_SWITCHER:Add suppress shortcut"
+msgstr "Ajouter/Supprimer un raccourci"
+
+#: Apps/APP_SWITCHER/APP_SWITCHER.app:11 Apps/APP_SWITCHER/APP_SWITCHER.app:29
 msgid "APP_SWITCHER:Default app switcher for DCP"
 msgstr "Application de sélection d'application"
 
+#: tempCatalog.php:3
 msgid "APP_SWITCHER:Disconnect"
 msgstr "Déconnecter"
 
+#: tempCatalog.php:5
 msgid "APP_SWITCHER:Display"
 msgstr "Afficher"
 
+#: tempCatalog.php:10
+msgid "APP_SWITCHER:Error"
+msgstr "Erreur"
+
+#: tempCatalog.php:11
+msgid "APP_SWITCHER:Info"
+msgstr "Information"
+
+#: tempCatalog.php:2
 msgid "APP_SWITCHER:No selected application"
 msgstr "Pas d'application sélectionnée"
 
+#: tempCatalog.php:7
 msgid "APP_SWITCHER:Open in a new window"
 msgstr "Ouvrir dans une fenêtre..."
 
+#: tempCatalog.php:6
 msgid "APP_SWITCHER:Reload"
 msgstr "Recharger"
 
+#: Apps/APP_SWITCHER/APP_SWITCHER.app:38
 msgid "APP_SWITCHER:SETDEFAULTAPPLICATION"
 msgstr "SET DEFAULT APPLICATION"
 
+#: Apps/APP_SWITCHER/APP_SWITCHER.app:45
 msgid "APP_SWITCHER:SHORTCUT_APPLICATION"
 msgstr "SHORTCUT APPLICATION"
 
+#: tempCatalog.php:4
 msgid "APP_SWITCHER:Search"
 msgstr "Recherche"
 
+#: tempCatalog.php:8
 msgid "APP_SWITCHER:Set as default application"
 msgstr "Sélectionner comme application par défaut"
 
+#: tempCatalog.php:1
 msgid "APP_SWITCHER:Title"
 msgstr "Dynacase"
 
+#: Apps/APP_SWITCHER/APP_SWITCHER_init.php:16
 msgid "APP_SWITCHER:application present in application bar"
 msgstr "Liste des applications dans la barre"
 
+#: Apps/APP_SWITCHER/APP_SWITCHER_init.php:10
 msgid "APP_SWITCHER:default application displayed"
 msgstr "Application par défaut"
 
-msgid "APP_SWITCHER:Add suppress shortcut"
-msgstr "Ajouter/Supprimer un raccourci"
+#: Actions/APP_SWITCHER/app_switcher.php:96
+msgid "description"
+msgstr ""
+
+#: Actions/APP_SWITCHER/app_switcher.php:95
+msgid "short_name"
+msgstr ""
