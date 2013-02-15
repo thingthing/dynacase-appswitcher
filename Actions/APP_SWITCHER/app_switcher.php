@@ -97,11 +97,13 @@ SQL;
         );
     }
 
-    $sortFunction = function ($value1, $value2) {
-        return strnatcasecmp($value1["TITLE"], $value2["TITLE"]);
-    };
+    $collator = new Collator($action->GetParam('CORE_LANG', 'fr_FR'));
 
-    uasort($displayableApplications, $sortFunction);
+    usort($displayableApplications, function ($app1, $app2) use ($collator)
+    {
+        /** @var Collator $collator */
+        return $collator->compare($app1["TITLE"], $app2["TITLE"]);
+    });
 
     return $displayableApplications;
 }
