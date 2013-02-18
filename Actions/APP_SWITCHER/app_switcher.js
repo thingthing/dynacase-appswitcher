@@ -53,19 +53,18 @@
         if (window.console && $.isFunction(window.console.log)) {
             window.console.log(err);
         }
-        $('<div><div class="ui-state-error"><p>'+
+        $('<div><div class="ui-state-error"><p>' +
             '<span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em;"></span>' +
             err + '</p></div></div>').dialog({title : window.app_switcher.errorTitle, modal : true});
     };
 
     window.dcp.displayWarningMessage = function displayWarningMessage(message) {
-        $('<div><div class="ui-state-highlight"><p>'+
+        $('<div><div class="ui-state-highlight"><p>' +
             '<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>' +
-            $('<div/>').text(message).html().replace(/\n/g,"<br/>","g")+'</p></div></div>')
-        .dialog({
-            modal:true,
-            title:'<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>'+window.app_switcher.infoTitle,
-            position : { at : 'top'}
+            $('<div/>').text(message).html().replace(/\n/g, "<br/>", "g") + '</p></div></div>')
+            .dialog({
+                modal : true,
+                title : '<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>' + window.app_switcher.infoTitle
             });
     };
 
@@ -303,7 +302,7 @@
         }).on("mouseenter", function () {
             $(this).addClass("ui-state-focus");
             setMainMenuAutoHideTimeOut($(".js-menu-content"), true);
-        }).on("mouseleave", function() {
+        }).on("mouseleave", function () {
             $(this).removeClass("ui-state-focus");
             setMainMenuAutoHideTimeOut($(".js-menu-content"), false);
         });
