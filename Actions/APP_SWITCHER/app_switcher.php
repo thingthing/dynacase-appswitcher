@@ -99,7 +99,7 @@ SQL;
 
     $collator = new Collator($action->GetParam('CORE_LANG', 'fr_FR'));
 
-    usort($displayableApplications, function ($app1, $app2) use ($collator)
+    uasort($displayableApplications, function ($app1, $app2) use ($collator)
     {
         /** @var Collator $collator */
         return $collator->compare($app1["TITLE"], $app2["TITLE"]);
