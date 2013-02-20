@@ -12,7 +12,8 @@ $app_desc = array(
     "icon" => "app_switcher.png",
     "displayable" => "N",
     "with_frame" => "N",
-    "childof" => ""
+    "childof" => "",
+    "tag" => "SYSTEM"
 );
 /* ACLs for this application */
 $app_acl = array(
