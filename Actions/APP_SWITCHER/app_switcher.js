@@ -430,6 +430,14 @@
         }).on("mouseleave", function () {
             $(this).removeClass("ui-state-hover");
         });
+        /* Admin button */
+        $(".js-admin-button").on("mouseenter", function () {
+            $(this).addClass("ui-state-hover");
+        }).on("mouseleave", function () {
+            $(this).removeClass("ui-state-hover");
+        }).on("click", function () {
+	    window.open('admin.php');
+	});
         /* Init password modifier */
         window.setTimeout(function () {
             $(".js-user-button").passwordModifier();

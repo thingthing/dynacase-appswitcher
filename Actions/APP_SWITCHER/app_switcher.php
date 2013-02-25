@@ -27,6 +27,11 @@ function app_switcher(Action & $action)
     $action->lay->set("WIDGET_PASSWORD", $action->parent->getJsLink("CORE:dcpui.passwordModifier.js.xml", true));
 
     /**
+     * Test user have admin access rights
+     */
+    $action->lay->set('DISPLAY_ADMIN_ACCESS_BUTTON', (file_exists('admin.php') && $action->canExecute("CORE_ADMIN_ROOT", "CORE_ADMIN") === ''));
+
+    /**
      * Test if can change password
      */
     $action->lay->set('DISPLAY_CHANGE_BUTTON', ("" === $user->canEdit()));
