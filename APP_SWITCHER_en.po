@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ZOO\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-02-15 10:00+0100\n"
-"PO-Revision-Date: 2010-01-12 15:35+0100\n"
+"POT-Creation-Date: 2013-02-25 17:36+0100\n"
+"PO-Revision-Date: 2013-02-25 17:38+0100\n"
 "Last-Translator: John Doe <john.doe@somewhere.org>\n"
 "Language-Team: English <distrib@somewhere.org>\n"
 "Language: en\n"
@@ -15,15 +15,19 @@ msgstr ""
 msgid "APP_SWITCHER:APP_SWITCHER"
 msgstr "Application Switcher"
 
-#: Apps/APP_SWITCHER/APP_SWITCHER.app:21
+#: Apps/APP_SWITCHER/APP_SWITCHER.app:22
 msgid "APP_SWITCHER:APP_SWITCHER access"
 msgstr "ACL for Application Switcher"
 
-#: tempCatalog.php:9
+#: tempCatalog.php:10
 msgid "APP_SWITCHER:Add suppress shortcut"
 msgstr "Add/Suppress shortcut"
 
-#: Apps/APP_SWITCHER/APP_SWITCHER.app:11 Apps/APP_SWITCHER/APP_SWITCHER.app:29
+#: tempCatalog.php:4
+msgid "APP_SWITCHER:Admin access"
+msgstr "Administration area access"
+
+#: Apps/APP_SWITCHER/APP_SWITCHER.app:11 Apps/APP_SWITCHER/APP_SWITCHER.app:30
 msgid "APP_SWITCHER:Default app switcher for DCP"
 msgstr "Default app switcher for DCP"
 
@@ -31,15 +35,15 @@ msgstr "Default app switcher for DCP"
 msgid "APP_SWITCHER:Disconnect"
 msgstr "Disconnect"
 
-#: tempCatalog.php:5
+#: tempCatalog.php:6
 msgid "APP_SWITCHER:Display"
 msgstr "Display"
 
-#: tempCatalog.php:10
+#: tempCatalog.php:11
 msgid "APP_SWITCHER:Error"
 msgstr "Error"
 
-#: tempCatalog.php:11
+#: tempCatalog.php:12
 msgid "APP_SWITCHER:Info"
 msgstr "Info"
 
@@ -47,27 +51,27 @@ msgstr "Info"
 msgid "APP_SWITCHER:No selected application"
 msgstr "No selected application"
 
-#: tempCatalog.php:7
+#: tempCatalog.php:8
 msgid "APP_SWITCHER:Open in a new window"
 msgstr "Open in a new window"
 
-#: tempCatalog.php:6
+#: tempCatalog.php:7
 msgid "APP_SWITCHER:Reload"
 msgstr "Reload"
 
-#: Apps/APP_SWITCHER/APP_SWITCHER.app:38
+#: Apps/APP_SWITCHER/APP_SWITCHER.app:39
 msgid "APP_SWITCHER:SETDEFAULTAPPLICATION"
 msgstr "SET DEFAULT APPLICATION"
 
-#: Apps/APP_SWITCHER/APP_SWITCHER.app:45
+#: Apps/APP_SWITCHER/APP_SWITCHER.app:46
 msgid "APP_SWITCHER:SHORTCUT_APPLICATION"
 msgstr "SHORTCUT APPLICATION"
 
-#: tempCatalog.php:4
+#: tempCatalog.php:5
 msgid "APP_SWITCHER:Search"
 msgstr "Search"
 
-#: tempCatalog.php:8
+#: tempCatalog.php:9
 msgid "APP_SWITCHER:Set as default application"
 msgstr "Set as default application"
 
@@ -83,10 +87,10 @@ msgstr "Application presents in application bar"
 msgid "APP_SWITCHER:default application displayed"
 msgstr "Default application"
 
-#: Actions/APP_SWITCHER/app_switcher.php:96
+#: Actions/APP_SWITCHER/app_switcher.php:101
 msgid "description"
 msgstr ""
 
-#: Actions/APP_SWITCHER/app_switcher.php:95
+#: Actions/APP_SWITCHER/app_switcher.php:100
 msgid "short_name"
 msgstr ""
