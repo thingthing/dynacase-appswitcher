@@ -232,6 +232,14 @@ ul.css-contextualMenu-list {
     margin-right: 5px;
 }
 
+/* Adin */
+.css-admin-button {
+    height: 100%;
+}
+
+.css-admin {
+}
+
 /* User button*/
 .css-user-button {
     height: 100%;
