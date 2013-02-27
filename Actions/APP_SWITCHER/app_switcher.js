@@ -404,6 +404,15 @@
         }).on("click", function () {
             $("#authent").trigger("submit");
         });
+        /* Admin button */
+        $("#admin").button({
+            icons : {
+                primary : "ui-icon-gear"
+            },
+            text :  false
+        }).on("click", function () {
+	    window.open('admin.php');
+	});
         /* Init default application */
         window.setTimeout(function () {
             var defaultApplication;
@@ -430,14 +439,6 @@
         }).on("mouseleave", function () {
             $(this).removeClass("ui-state-hover");
         });
-        /* Admin button */
-        $(".js-admin-button").on("mouseenter", function () {
-            $(this).addClass("ui-state-hover");
-        }).on("mouseleave", function () {
-            $(this).removeClass("ui-state-hover");
-        }).on("click", function () {
-	    window.open('admin.php');
-	});
         /* Init password modifier */
         window.setTimeout(function () {
             $(".js-user-button").passwordModifier();

@@ -41,12 +41,10 @@
     <div class="css-logout css-header-right" title="[TEXT:APP_SWITCHER:Disconnect]">
         <button id="disconnect" class="css-disconnect-button"></button>
     </div>
-    <div class="css-header-right">
-        [IF DISPLAY_ADMIN_ACCESS_BUTTON]
-        <button id="adminButton" class="ui-button ui-state-default ui-corner-all  ui-button-icon-only css-user-button js-admin-button"  title="[TEXT:APP_SWITCHER:Admin access]">
-            <span class="ui-icon ui-icon-gear"></span>
-        </button>
-        [ENDIF DISPLAY_ADMIN_ACCESS_BUTTON]
+    <div class="css-admin css-header-right">
+      [IF DISPLAY_ADMIN_ACCESS_BUTTON]
+      <button id="admin" class="css-admin-button"  title="[TEXT:APP_SWITCHER:Admin access]"></button>
+      [ENDIF DISPLAY_ADMIN_ACCESS_BUTTON]
     </div>
     <div class="css-user-zone css-header-right">
         [IF DISPLAY_CHANGE_BUTTON]
