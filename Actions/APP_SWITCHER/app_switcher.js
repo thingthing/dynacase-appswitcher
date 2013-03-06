@@ -59,13 +59,23 @@
     };
 
     window.dcp.displayWarningMessage = function displayWarningMessage(message) {
-        $('<div><div class="ui-state-highlight"><p>' +
-            '<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>' +
-            $('<div/>').text(message).html().replace(/\n/g, "<br/>", "g") + '</p></div></div>')
+        var i, messages, length,
+            $wrapper = $('<p></p>');
+        messages = message.split("\n");
+        for (i = 0 , length = messages.length ; i < length; i+=1) {
+            $wrapper.append($("<span></span>").text(messages[i]));
+            if (i < length -1) {
+                $wrapper.append("<br/>");
+            }
+        }
+
+        $wrapper = $('<div class="ui-state-highlight"></div>').append($wrapper);
+
+        $('<div></div>').append($wrapper)
             .dialog({
-                modal : true,
-                title : '<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>' + window.app_switcher.infoTitle
-            });
+                    modal:true,
+                    title:'<span class="ui-icon ui-icon-info" style="float: left; margin-right: .3em;"></span>' + window.app_switcher.infoTitle
+                });
     };
 
     /**
